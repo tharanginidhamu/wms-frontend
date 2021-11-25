@@ -1,0 +1,46 @@
+<div class="row">
+
+  <div class="col-xl-12 text-right">
+    <button type="button" class="btn btn-primary"  (click)='exportToExcel(itemin)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+
+  </div>
+    <!-- <button (click)='dummy()'>add</button> -->
+    <!-- <form [formGroup]='productForm'>
+      <input type="text" formControlName='descriptionn' [(ngModel)]='searchProduct'>
+    </form>
+    <ul *ngFor='let data of avaData | filter:searchProduct'>
+      <li (click)='getDetails(data)'>{{data.itemDescription}}</li>
+    </ul>
+    {{searchProduct}} -->
+    <div class="col-xl-12">
+      <app-card cardTitle="Item-Summary" [options]="false" blockClass="table-border-style">
+        <div class="table-responsive">
+          <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+            <tr>
+              <th>Item-Code</th>
+              <th>ItemName</th>
+              <th>ItemIn</th>
+              <th>ItemOut</th>
+              <th>Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let data of itemin'>
+                <td>{{data.ItemCode}}</td>
+                <td>{{data.ItemName}}</td>
+                <td>{{data.ItemIn}}</td>
+                <td>{{data.ItemOut}}</td>
+                <td>{{data.Balance}}</td>
+  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+     
+    </div>
+  
+  </div>
+  
+  

@@ -1,0 +1,28 @@
+<div class="row" >
+    <div class="col-xl-12">
+      <app-card cardTitle="Load Your File" [options]="false" blockClass="table-border-style">
+            <form class="receiptaddform" [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+              <div class="row">
+                <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+                <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+                <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+    
+              <div class="col-lg-6"> <label for="itemcode">Date:</label> <br>  
+                <input type="date" class="form-control" formControlName="date"> 
+              </div>
+              <div class="col-lg-6"> <label for="itemcode">File Name:</label> <br>  
+                <input type="text" class="form-control" placeholder="Enter File Name"  formControlName="fileName"> 
+              </div>
+              <div class="col-lg-6"> <label for="itemcode">Add-File:</label> <br>  
+                <input type="file" class="form-control"  (change)="uploadFile($event)"> 
+              </div>
+            </div>
+            <div class="row"> 
+              <div class="submit">  <button type="submit" > Submit </button>  </div>
+            </div>
+            </form>
+      </app-card>
+    </div>
+  </div>
+  
+ 

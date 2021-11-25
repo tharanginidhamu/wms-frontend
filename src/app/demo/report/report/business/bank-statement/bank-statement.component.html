@@ -1,0 +1,127 @@
+
+    <div class="row" [hidden]='hide==true'>
+        <div class="col-lg-12 text-right">
+          <button type="button" class="btn btn-outline-primary" (click)='addform()'>
+            <img src="../../../../../assets/images/plus.png" alt="">
+        </button>
+        </div>
+        
+        <div class="col-md-12">  
+          <app-card cardTitle="Bank-Statement" [options]="false" blockClass="table-border-style">  
+            <div class="table-responsive" >  
+              <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">  
+                <thead>  
+                  <tr> 
+                    <!-- <th>Date</th>   -->
+                    <th>Bank Name</th>
+                    <th>Account-Holder Name</th> 
+                    <th>Account Number</th>  
+                    <th>IFSC-Code</th>
+                    <th>Branch Name</th> 
+                    <th>check</th>
+                    <th>Add-Transaction</th>
+                  
+                    <th>Action</th> 
+                  </tr>  
+                </thead>  
+                <tbody>
+                    <tr *ngFor="let data of getData">
+                        <!-- <td>{{data.date}}</td> -->
+                        <td>{{data.bankName}}</td>
+                        <td>{{data.accountHolderName}}</td>
+                        <td>{{data.accountNumber}}</td>
+                        <td>{{data.ifscCode}}</td>
+                        <td>{{data.bankBranch}}</td>
+                        
+                        <td> <button style="border: none; background: none; color: gray;" (click)='check(data)'><i class="fas fa-file-invoice-dollar"></i></button></td>
+                        <td><button style="border: none; background: none; color: gray;" (click)='addTrans(data)'><i class="fas fa-dollar-sign"></i></button></td>
+                        <td><button style="border: none; background: none; color: #007bcf;" (click)='editDetail(data)'> <i class="fa fa-edit">  </i> </button>  &nbsp; 
+                          <button style="border: none; background: none; color: red;" (click)='delete(data._id)'> <i class="fa fa-trash"> </i> </button>
+                        </td> 
+                    </tr>
+                </tbody>
+              </table> 
+            </div>
+          </app-card>
+        </div>
+        </div>
+
+
+
+        <div [hidden]='hide==false'>
+          <section class="bankacstmt">
+            <div class="month" style="text-align: right; "> <b style="color: black;">Select Month</b>
+              <select (change)="setchange($event.target.value)" style="width: 183px; height: 30px;">
+                  <option  value='1'>January</option>
+                  <option value='2'>February</option>
+                  <option value='3'>March</option>
+                  <option value='4'>April</option>
+                  <option value='5'>May</option>
+                  <option value='6'>June</option>
+                  <option value='7'>July</option>
+                  <option value='8'>August</option>
+                  <option value='9'>September</option>
+                  <option value='10'>October</option>
+                  <option value='11'>November</option>
+                  <option  value='12'>December</option>
+                  </select> 
+            </div>
+            <div class="row">
+              <div class="col-lg-6 bankname">
+                <h3> {{bankname}}</h3>
+                <h6>{{branch}} </h6>
+                <h6>{{bankaddress}} </h6>
+              </div>
+              <div class="col-lg-6 text-right bastmt">
+                <h6> BANK ACCOUNT STATEMENT </h6>
+              </div>
+            </div>  
+            <div class="row">
+              <div class="col-lg-7 custname">
+                <h5>{{holdername}} </h5>
+                <H6> {{holderaddress}} </H6>
+                <h6></h6>
+              </div>
+              <div class="col-lg-5 text-right">
+                <div class="row custhead">
+                  <!-- <div class="col-lg-1"></div> -->
+                  <div class="col-lg-7"> <span> <b>STATEMENT PERIOD</b> </span> </div>
+                  <div class="col-lg-5"> <span> <b> ACCOUNT NO</b></span> </div>
+                </div>
+                <div class="row custheadn">
+                  <!-- <div class="col-lg-1"></div> -->
+                  <div class="col-lg-7"> <span>2020-02-14 to 2025-02-14</span> </div>
+                  <div class="col-lg-5"> <span>{{Acnum}} </span></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="banktable">
+                  <tr class="banktablehead">
+                    <th> Date </th>
+                    <th> Description </th>
+                    <th> Charges </th>
+                    <th> Withdrawals </th>
+                    <th> Deposits </th>
+                    <th> Balance </th>
+                  </tr>
+                  <tr *ngFor="let data of transaction"> 
+                    <td>{{data.date}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.charges}}</td>
+                        <td>{{data.withdrawel}}</td>
+                        <td>{{data.deposit}}</td>
+                        <td>{{data.balance}}</td>
+                  </tr>
+                  <!-- <tr>
+                    <td colspan="3" class="total"> <b> *** Totals *** </b> </td>
+                    <td>1,205.58</td>
+                    <td>5,254.61</td>
+                  </tr> -->
+                </table>
+              </div>
+            </div>
+          </section>
+
+        </div>

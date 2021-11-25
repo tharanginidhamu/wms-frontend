@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xl-12 text-right">
+    <button type="button" class="btn btn-primary" (click)='exportToExcel(lowstock)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+
+  </div>
+  
+  <div class="col-xl-12">
+      <app-card cardTitle="Low-Stock Summary" [options]="false" blockClass="table-border-style">
+        <div class="table-responsive">
+          <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+            <tr>
+              <th>Item-Code</th>
+              <th>ItemName</th>
+              <th>ItemIn</th>
+              <th>ItemOut</th>
+              <th>Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let data of lowstock'>
+                <td>{{data.ItemCode}}</td>
+                <td>{{data.ItemName}}</td>
+                <td>{{data.ItemIn}}</td>
+                <td>{{data.ItemOut}}</td>
+                <td>{{data.Balance}}</td>
+  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+     
+    </div>
+  
+  </div>
+  
+  

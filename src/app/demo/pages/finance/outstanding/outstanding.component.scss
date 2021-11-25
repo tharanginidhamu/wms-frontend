@@ -1,0 +1,39 @@
+.image{
+    height: 30px;
+    width: 40px;
+ }
+ 
+//  .container{
+// 	 margin: 50%;
+//  }
+
+//  newwwww
+
+/*	Reset & General
+---------------------------------------------------------------------- */
+// * { margin: 0px; padding: 0px; }
+body {
+	background: #ecf1f5;
+	font:14px "Open Sans", sans-serif; 
+	text-align:center;
+}
+.supplierview{
+  margin: 0 5%;
+  padding: 2%;
+  background-color: white;
+}
+.sviewtable{
+  width: 100%;
+  background-color: white;
+}
+.sviewform { color:rgb(80, 76, 76); }
+.sviewtable { margin: 2% 0; }
+.sviewtable th{text-align: center;}
+.sviewtable tr, .sviewtable th, .sviewtable td{
+  border: 1px solid gray;
+  padding: 0.5% ;
+}
+.fa-eye:before {
+  content: "\f06e";
+  color: #b4afaf ;
+}

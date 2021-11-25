@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-12 text-right">
+    <button type="button" class="btn btn-outline-primary" (click)='addproduct()'> 
+      <img src="../../../../../assets/images/plus.png" alt=""> 
+    </button>
+    <button type="button" class="btn btn-primary"  (click)='exportToExcel(getProduct)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+</div>
+  <div class="col-xl-12">
+    <app-card cardTitle="Product" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  >
+          <thead>
+          <tr>
+            <th  rowspan="2">Select</th>
+            <th rowspan="2"> Item Code </th>
+            <th rowspan="2"> Description </th>
+            <th rowspan="2"> HSN Code </th>
+            <th rowspan="2"> Quantity </th>
+            <th rowspan="2"> UOM </th>
+            <th rowspan="2"> Unit Rate </th>
+            <th rowspan="2">Total(Pre Tax Amount)</th>
+            <th colspan="2"> CGST </th>
+            <th colspan="2"> SGST </th>
+            <th rowspan="2">Total Invoice Amount </th>
+            <th rowspan="2">Action</th>
+          </tr>
+          <tr>       
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor='let data of getProduct'>
+            <td><input type="checkbox" (change)='getValue(data,$event.target.checked)'></td>
+            <td> {{data.itemCode}} </td>
+            <td> {{data.description}} </td>
+            <td> {{data.hsnCode}} </td>
+            <td> {{data.quantity}} </td>
+            <td> {{data.vom}} </td>
+            <td> {{data.unitRate }} </td>
+            <td> {{data.total}}</td>
+            <td> {{data.CGST}} </td>
+            <th> {{data.CGSTAmount | number:'1.2-2'}} </th>
+            <td> {{data.SGST}} </td>
+            <td> {{data.SGSTAmount | number:'1.2-2'}} </td>
+            <td> {{data.invoiceTotal | number:'1.2-2'}} </td>
+            <td><button style="border: none; background: none;" (click)='editProduct(data)'> <i style="color: #007bcf;" class="fa fa-edit"></i> </button>
+                <button style="border: none; background: none;"  (click)='deleteProduct(data._id)'> <i style="color: red;" class="fa fa-trash"></i> </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+   
+
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row">
+
+  <!-- <div class="col-lg-12 text-right">
+    <button type="button" class="btn btn-outline-primary" (click)='addhistory()'>
+      <img src="../../../../../assets/images/plus.png" alt="">
+    </button>
+  </div> -->
+
+    <div class="col-xl-12">
+      <app-card cardTitle="Customer Finance Track History " [options]="false" blockClass="table-border-style">
+        <div class="month" style="text-align: right; "> <b style="color: black;">Select Month</b>&nbsp;
+          <div class="dated" >
+            <label>From Date: &nbsp;</label>  <input type="date" [formControl]="fromdate" (change)='from($event.target.value)'>
+            <label>To Date: &nbsp;</label>  <input type="date" [formControl]="enddate" (change)='to($event.target.value)'>
+            </div>
+          </div>
+        <div class="table-responsive">
+          <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name </th>
+              <th> Bill Amount </th>
+              <th> Credit Amount</th>
+              <!-- <th> Credit-Amount </th> -->
+              <th>Balance</th>
+              <th> Action </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let data of datefilter'>
+              <td>{{data.date}} </td>
+              <td>{{data.name}}</td>
+              <td>{{data.overAllInvoiceAmount | number:'1.2-2'}}</td>
+              <td>{{data.credit| number:'1.2-2'}}</td>
+              <!-- <td>{{data.overAllInvoiceTotal | number:'1.2-2' }}</td> -->
+              <!-- <td>{{data. | number:'1.2-2' }}</td> -->
+              <td> {{data.balance | number:'1.2-2'}}</td>
+              <td> <button (click)='update(data)' style="background: none; border: none;" ><i style="color: #007bff;"class="fa fa-edit"></i></button> </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div  *ngIf='tap'>
+          <label for="for">Total Credit  {{credit}}</label>
+          <label for="for"> Total Amount Paid  {{Apaid}} </label>
+          <label for="for">Total Balance  {{balance}} </label>
+  
+        </div>
+      </app-card>
+    </div>
+
+  </div>

@@ -1,0 +1,25 @@
+table.dataTable tbody th, table.dataTable tbody td {
+	padding: 8px 0px !important;
+	text-align: center !important;
+  }
+  table.dataTable thead th, table.dataTable thead td {
+	padding: 15px 3px 10px !important;
+	text-align: center !important;
+
+} 
+
+table.dataTable thead .sorting {
+	background-image: none;
+  }
+  table.dataTable thead .sorting_asc {
+	background-image: none;
+  }
+  table.dataTable thead .sorting_desc {
+	background-image: none;
+  }
+  table.dataTable thead .sorting_asc_disabled {
+	background-image: none;
+  }
+  table.dataTable thead .sorting_desc_disabled {
+	background-image: none;
+  }

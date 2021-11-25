@@ -1,0 +1,47 @@
+<div class="row">
+
+    <div class="col-lg-12 text-right">
+      <button type="button" class="btn btn-outline-primary" (click)='supplierform()'>
+        <img src="../../../../../assets/images/plus.png" alt="">
+      </button>
+      <button type="button" class="btn btn-primary"  (click)='exportToExcel(getSupplier)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+    </div>
+    
+    <div class="col-xl-12">
+      <app-card cardTitle="Suppliers" [options]="false" blockClass="table-border-style">
+        <div class="table-responsive">
+          <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+            <tr>
+              <th>Select</th>
+                <th>Date</th>
+              <th> Supplier Name </th>          
+              <th> Supplier Location </th>
+              <th> Contact Number </th>
+              <th>Alternate Number</th>
+              <th> GST Number </th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let data of datefilter'>
+            <td><input type="checkbox" (change)='getValue(data,$event.target.checked)'></td>
+              <td>{{data.supplierDate}}</td>
+              <td>{{data.supplierName}}</td>
+              <td>{{data.supplierLocation}}</td>
+              <td>{{data.contactNumber}}</td>
+              <td>{{data.alternateNumber}}</td>
+              <td>{{data.GSTNumber}}</td>
+              <td><button (click)='editSupplier(data)' style="border: none; background: none; color: none;"> <i style="color: #007bcf;"class="fa fa-edit"></i> </button> &nbsp;&nbsp;
+              <button (click)='deleteSupplier(data._id)'  style="border: none; background: none;"> <i style="color: red" class="fa fa-trash"></i> </button>
+            </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+  
+
+      </app-card>
+    </div>
+  
+  </div>

@@ -1,0 +1,55 @@
+<div class="row" >
+    <!-- <div class="col-lg-12 text-right">
+        <button type="button" class="btn btn-outline-primary" (click)='invoiceform()'> 
+        <img src="../../../../../assets/images/plus.png" alt=""> 
+        </button>
+    </div> -->
+
+    <div class="col-xl-12">
+        <app-card cardTitle="Party Report-By Items" [options]="false" blockClass="table-border-style">
+            <div class="month" style="text-align: right; "> <b style="color: black;">Select Month</b>
+                <select (change)="setchange($event.target.value)" style="width: 183px; height: 30px;">
+                    <option  value='1'>January</option>
+                    <option value='2'>February</option>
+                    <option value='3'>March</option>
+                    <option value='4'>April</option>
+                    <option value='5'>May</option>
+                    <option value='6'>June</option>
+                    <option value='7'>July</option>
+                    <option value='8'>August</option>
+                    <option value='9'>September</option>
+                    <option value='10'>October</option>
+                    <option value='11'>November</option>
+                    <option  value='12'>December</option>
+                    </select> 
+              </div>
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Invoice Number </th>
+                <th> Date </th>
+                <th> Customer Name </th>
+                <th> GST Number </th>
+               
+                <th> Contact Number </th>
+                <th>Export</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of final'>
+                <td>{{data.invoiceNumber}}</td>
+                <td>{{data.date}} </td>
+                <td>{{data.name}} </td>
+                <td>{{data.cost}} </td>
+               
+                <td>{{data.contactNumber}} </td>
+               <td> <button  (click)='exportToExcel(data)'> <i class="fas fa-file-download"></i>  </button> </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+        <!-- <button type="button"  (click)='exportToExcel(pro)'>Export</button> -->
+      </div>
+</div>

@@ -1,0 +1,648 @@
+th{
+    text-align: center;
+}
+
+// ------tooltip
+a.tooltip {outline:none; }
+a.tooltip strong {line-height:30px;}
+a.tooltip:hover {text-decoration:none;} 
+a.tooltip span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-30px; margin-left:28px;
+    width:300px; line-height:16px;
+}
+a.tooltip:hover span{
+    display:inline; position:absolute; color:#111;
+    border:1px solid #DCA; background:white;}
+.callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
+    
+/*CSS3 extras*/
+a.tooltip span
+{
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #CCC;
+}
+
+
+tr .spnTooltip {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-30px; margin-left:28px;
+    width:300px; line-height:16px;
+}
+tr:hover .spnTooltip{
+    display:inline; position:absolute; color:#111;
+    border:1px solid #DCA; background:white;}
+.callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
+table.dataTable tbody th, table.dataTable tbody td {
+    text-align: center !important;
+  }
+  table.dataTable thead th, table.dataTable thead td {
+    text-align: center !important;
+
+}
+  
+// =========================
+
+// table { background-color: rgb(252, 252, 252);}
+.tmargin{ padding: 0 20%;}
+.billing table { 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #212529;
+}
+div, p, a, li, td { -webkit-text-size-adjust: none; }
+.ExternalClass { width: 100%; background-color: #FFFFFF; }
+p { padding: 0 !important; margin-top: 0 !important; margin-right: 0 !important; margin-bottom: 0 !important; margin-left: 0 !important; }
+.visibleMobile { display: none; }
+.hiddenMobile { display: block; }
+@media only screen and (max-width: 600px) {
+body { width: auto !important; }
+table[class=fullTable] { width: 96% !important; clear: both; }
+table[class=fullPadding] { width: 85% !important; clear: both; }
+table[class=col] { width: 45% !important; }
+.erase { display: none; }
+}
+@media only screen and (max-width: 420px) {
+table[class=fullTable] { width: 100% !important; clear: both; }
+table[class=fullPadding] { width: 85% !important; clear: both; }
+table[class=col] { width: 100% !important; clear: both; }
+table[class=col] td { text-align: left !important; }
+.erase { display: none; font-size: 0; max-height: 0; line-height: 0; padding: 0; }
+.visibleMobile { display: block !important; }
+.hiddenMobile { display: none !important; }
+}
+.cddiv, .pddiv{ 
+    background-color: white;
+    padding: 1%;
+    
+}
+.cddiv input,.cddiv textarea{ 
+    width: 100%;
+    padding: 1% 3%;
+}
+.cdmargin{
+    margin: 4% 0 0;
+}
+.pddiv input , .pddiv textarea{
+    width: 100%;
+    padding: 1% 3%;
+}
+.pddiv button{
+    margin: 13% 0 0;
+}
+.pdmargin{
+    margin: 2% 0 0;
+}
+.billtitle{
+    margin: 3% 0;
+    text-align: center;
+}
+.searchlist ul
+{
+    width: 100%;
+    position: relative;
+    padding: 2%;
+    list-style-type: none;
+    background-color: white;
+    margin-top: 0%;
+    margin-left: 0%;
+    box-shadow: 0 5px 10px #888888;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.searchlist ul li{
+    margin: 1% 0 ;
+}
+.searchlist1 ul
+{
+    width: 98%;
+    position: relative;
+    padding: 2%;
+    list-style-type: none;
+    background-color: white;
+    margin-top: 0%;
+    margin-left: 0%;
+    box-shadow: 0 5px 10px #888888;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.searchlist1 ul li
+{
+    margin: 1% 0 ;
+}
+.indel input{ width: 85%;}
+.indel button{ 
+  background:none;
+  border: none;
+  float: right; 
+  width: 10%;}
+.invoicediv{
+    background-color: white;
+    padding: 1%;
+}
+.rowmargin{
+    margin: 1% 0;
+}
+.rowmarge{
+  padding-top: 1%;
+  // padding: 0%;
+
+  // margin: 1% 0;
+}
+.invoicediv .brandtitle h3{
+    vertical-align: middle;
+    line-height: 90px;
+}
+.invoicediv .brandtype .row{
+    height: 50%;
+}
+.invoicediv .borderdiv{
+    border: 1px solid rgb(100, 100, 100);
+    padding: 1%;
+}
+.invoicediv .borderdiv p{
+    font-size: 12px;
+    line-height: 15px;
+    padding: 2% 2% 0 0;
+}
+.invoicedate table{
+    padding-left: 2%;;
+}
+.invoicetable table tr,
+.invoicetable table th,
+.invoicetable table td {
+    border: 1px solid rgb(107, 106, 106);
+    text-align: center !important;
+}
+.invoicetable table th{
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+.invoicetable table td { 
+    text-align: right;
+    padding: 0 1%;
+}
+.invoicetable table .description{
+    text-align: left;
+    padding: 0 5px;
+}
+.rowmarginbottom{
+    margin: 10% 0 2%;
+    font-size: 12px;
+}
+.signbox{
+    border: 1px solid rgb(104, 103, 103);
+}
+.invoicefootertext{
+    line-height: 15px;
+    font-size: 12px;
+}
+.terms{
+    font-size: 10px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    color: rgb(3, 3, 3);
+    border: 1px solid #ddd;
+    background-color: white;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: white}
+  .invoiceinput{
+    border: 0.3px solid rgb(201, 201, 201);
+    background-color: none;
+    height: 15px;
+    width: 85px;
+    font-size: 10px;
+  }
+  .invoiceinputs{
+    border: 0.3px solid rgb(201, 201, 201);
+    background-color: none;
+    height: 15px;
+    width: 50px;
+    font-size: 10px!important;
+  }
+/*****************************floating****************************/
+// .floating-form {
+//     width:320px;
+//   }
+  
+//   /****  floating-Lable style start ****/
+//   .floating-label { 
+//     position:relative; 
+//     margin-bottom:20px; 
+//   }
+//   .floating-input , .floating-select {
+//     font-size:14px;
+//     padding:4px 4px;
+//     display:block;
+//     width:100%;
+//     height:30px;
+//     background-color: white!important;
+//     border:none;
+//     border-bottom:1px solid #757575;
+//   }
+//    .floating-inputs, .floating-select {
+//     font-size:14px;
+//     padding:4px 4px;
+//     display:block;
+//     width: 50% !important;;
+//     height:30px;
+//     background-color: white;
+//     border:none;
+//     border-bottom:1px solid #757575;
+//   }
+  
+  
+//   .floating-input:focus ,.floating-inputs, .floating-select:focus {
+//        outline:none;
+//        border-bottom:2px solid #5264AE; 
+//   }
+ 
+//   label {
+//     color:#999; 
+//     font-size:14px;
+//     font-weight:normal;
+//     position:absolute;
+//     pointer-events:none;
+//     left:5px;
+//     top:5px;
+//     transition:0.2s ease all; 
+//     -moz-transition:0.2s ease all; 
+//     -webkit-transition:0.2s ease all;
+//   }
+  
+//   .floating-input:focus ~ label,.floating-inputs:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+//     top:-18px;
+//     font-size:14px;
+//     color:#5264AE;
+//   }
+  
+//   .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+//     top:-18px;
+//     font-size:14px;
+//     color:#5264AE;
+//   }
+  
+//   /* active state */
+//   .floating-input:focus ~ .bar:before,.floating-inputs:focus ~ .bar:before, .floating-input:focus ~ .bar:after,
+//    .floating-inputs:focus ~ .bar:after,.floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+//     width:50%;
+//   }
+  
+//   *, *:before, *:after {
+//       -webkit-box-sizing: border-box;
+//       -moz-box-sizing: border-box;
+//       box-sizing: border-box;
+//   }
+  
+//   .floating-textarea {
+//      min-height: 30px;
+//      max-height: 260px; 
+//      overflow:hidden;
+//     overflow-x: hidden; 
+//   }
+  
+//   /* highlighter */
+//   .highlight {
+//     position:absolute;
+//     height:50%; 
+//     width:100%; 
+//     top:15%; 
+//     left:0;
+//     pointer-events:none;
+//     opacity:0.5;
+//   }
+  
+//   /* active state */
+//   .floating-input:focus ~ .highlight ,  .floating-inputs:focus ~ .highlight , .floating-select:focus ~ .highlight {
+//     -webkit-animation:inputHighlighter 0.3s ease;
+//     -moz-animation:inputHighlighter 0.3s ease;
+//     animation:inputHighlighter 0.3s ease;
+//   }
+  
+//   /* animation */
+//   @-webkit-keyframes inputHighlighter {
+//       from { background:#5264AE; }
+//     to   { width:0; background:transparent; }
+//   }
+//   @-moz-keyframes inputHighlighter {
+//       from { background:#5264AE; }
+//     to   { width:0; background:transparent; }
+//   }
+//   @keyframes inputHighlighter {
+//       from { background:#5264AE; }
+//     to   { width:0; background:transparent; }
+//   }
+  
+//   /****  floating-Lable style end ****/
+  
+//   /***   Body style start  ***/
+  
+//   html {
+//       font-family: "Helvetica Neue", Helvetica, "Noto Sans", sans-serif, Arial, sans-serif;
+//       font-size: 12px;
+//       line-height: 1.42857143;
+//       color: #949494;
+//       background-color: #FFFFFF!important;
+//   }
+//   /***   Body style end  ***/
+//   .body{
+//       background-color: white!important;
+//   }
+  
+//   /***   daniel - Fork me friend - style   ***/
+//   .floating-credit { position:fixed; bottom:10px;right:10px; color:#aaa; font-size:13px;font-family:arial,sans-serif; }
+//   .floating-credit a { text-decoration:none; color:#000000; font-weight:bold; }
+//   .floating-credit a:hover { border-bottom:1px dotted #F8F8F8; }
+//   .floating-heading { position:fixed; color:#aaa; font-size:20px; font-family:arial,sans-serif; }
+//   /***  daniel - Fork me friend - style  ***/
+.container {
+    width: 550px;
+    margin: 45px auto;
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+  
+  .form-part {
+    margin: 20px 0;
+  }
+  
+  .form-part h2 {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 15px;
+  }
+  
+  .text-input,
+  .radio-button,
+  .check-boxes {
+    margin-bottom: 13px;
+  }
+  
+  .text-input label,
+  .radio-button label,
+  .check-boxes label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .radio-button label,
+  .check-boxes label {
+    margin-bottom: 7px;
+    font-weight: 900;
+  }
+  
+  .text-input input,
+  .text-input textarea,
+  .text-input select {
+    padding: 7px 7px;
+    display: block;
+    width: 100%;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+  
+  .text-input select {
+    width: 100%;
+  }
+  
+  .text-input textarea {
+    height: 100px;
+  }
+  
+  .sqr-input .text-input,
+  .sqr-radio-input .radio-button,
+  .sqr-check-input .check-boxes {
+    float: left;
+    width: 45%;
+  }
+  
+  .sqr-input .text-input:nth-child(1),
+  .sqr-radio-input .radio-button:nth-child(1),
+  .sqr-check-input .check-boxes:nth-child(1) {
+    margin-right: 10%;
+  }
+  
+  .cub-input .text-input {
+    float: left;
+    width: 26.66%;
+  }
+  
+  .cub-input .text-input:nth-child(1),
+  .cub-input .text-input:nth-child(2) {
+    margin-right: 10%;
+  }
+  
+  .ns-radio-btn input[type="radio"],
+  .ns-check-box input[type="checkbox"] {
+    visibility: hidden;
+  }
+  .productspace{
+      margin-top: 70px;
+  }
+  .tick{
+      height: 20px;
+      width: 20px;
+  }
+  
+  .addsubmit{
+      position: absolute;
+      bottom: 28px;
+      left:720px;
+  }
+
+  @media (max-width:425px){
+    table.dataTable tbody th, table.dataTable tbody td {
+      padding: 7px 1px;
+  }  
+  }
+
+
+  @media print {
+    // <link rel="stylesheet" href="css/style.css"/>
+    .cddiv, .pddiv{ 
+      background-color: white;
+      padding: 1%;
+      
+  }
+  .cddiv input,.cddiv textarea{ 
+      width: 100%;
+      padding: 1% 3%;
+  }
+  .cdmargin{
+      margin: 4% 0 0;
+  }
+  .pddiv input , .pddiv textarea{
+      width: 100%;
+      padding: 1% 3%;
+  }
+  .pddiv button{
+      margin: 13% 0 0;
+  }
+  .pdmargin{
+      margin: 2% 0 0;
+  }
+  .billtitle{
+      margin: 3% 0;
+      text-align: center;
+  }
+  .searchlist ul
+  {
+      width: 100%;
+      position: relative;
+      padding: 2%;
+      list-style-type: none;
+      background-color: white;
+      margin-top: 0%;
+      margin-left: 0%;
+      box-shadow: 0 5px 10px #888888;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+  }
+  .searchlist ul li{
+      margin: 1% 0 ;
+  }
+  .searchlist1 ul
+  {
+      width: 98%;
+      position: relative;
+      padding: 2%;
+      list-style-type: none;
+      background-color: white;
+      margin-top: 0%;
+      margin-left: 0%;
+      box-shadow: 0 5px 10px #888888;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+  }
+  .searchlist1 ul li
+  {
+      margin: 1% 0 ;
+  }
+  .indel input{ width: 85%;}
+  .indel button{ 
+    background:none;
+    border: none;
+    float: right; 
+    width: 10%;}
+  .invoicediv{
+      background-color: white;
+      padding: 1%;
+  }
+  .rowmargin{
+      margin: 1% 0;
+  }
+  .rowmarge{
+    padding-top: 1%;
+    // padding: 0%;
+  
+    // margin: 1% 0;
+  }
+  .invoicediv .brandtitle h3{
+      vertical-align: middle;
+      line-height: 90px;
+  }
+  .invoicediv .brandtype .row{
+      height: 50%;
+  }
+  .invoicediv .borderdiv{
+      border: 1px solid rgb(100, 100, 100);
+      padding: 1%;
+  }
+  .invoicediv .borderdiv p{
+      font-size: 12px;
+      line-height: 15px;
+      padding: 2% 2% 0 0;
+  }
+  .invoicedate table{
+      padding-left: 2%;;
+  }
+  .invoicetable table tr,
+  .invoicetable table th,
+  .invoicetable table td {
+      border: 1px solid rgb(107, 106, 106);
+      text-align: center !important;
+  }
+  .invoicetable table th{
+      padding: 0;
+      text-align: center;
+      vertical-align: middle;
+  }
+  .invoicetable table td { 
+      text-align: right;
+      padding: 0 1%;
+  }
+  .invoicetable table .description{
+      text-align: left;
+      padding: 0 5px;
+  }
+  .rowmarginbottom{
+      margin: 10% 0 2%;
+      font-size: 12px;
+  }
+  .signbox{
+      border: 1px solid rgb(104, 103, 103);
+  }
+  .invoicefootertext{
+      line-height: 15px;
+      font-size: 12px;
+  }
+  .terms{
+      font-size: 10px;
+  }
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      color: rgb(3, 3, 3);
+      border: 1px solid #ddd;
+      background-color: white;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even){background-color: white}
+    .invoiceinput{
+      border: 0.3px solid rgb(201, 201, 201);
+      background-color: none;
+      height: 15px;
+      width: 85px;
+      font-size: 10px;
+    }
+    .invoiceinputs{
+      border: 0.3px solid rgb(201, 201, 201);
+      background-color: none;
+      height: 15px;
+      width: 50px;
+      font-size: 10px!important;
+    }
+  
+  }

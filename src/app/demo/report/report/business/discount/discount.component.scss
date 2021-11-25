@@ -1,0 +1,102 @@
+.container {
+    width: 550px;
+    margin: 45px auto;
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+  
+  .form-part {
+    margin: 20px 0;
+  }
+  
+  .form-part h2 {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 15px;
+  }
+  
+  .text-input,
+  .radio-button,
+  .check-boxes {
+    margin-bottom: 13px;
+  }
+  
+  .text-input label,
+  .radio-button label,
+  .check-boxes label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .radio-button label,
+  .check-boxes label {
+    margin-bottom: 7px;
+    font-weight: 900;
+  }
+  
+  .text-input input,
+  .text-input textarea,
+  .text-input select {
+    padding: 7px 7px;
+    display: block;
+    width: 100%;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+  
+  .text-input select {
+    width: 100%;
+  }
+  
+  .text-input textarea {
+    height: 100px;
+  }
+  
+  .sqr-input .text-input,
+  .sqr-radio-input .radio-button,
+  .sqr-check-input .check-boxes {
+    float: left;
+    width: 45%;
+  }
+  
+  .sqr-input .text-input:nth-child(1),
+  .sqr-radio-input .radio-button:nth-child(1),
+  .sqr-check-input .check-boxes:nth-child(1) {
+    margin-right: 10%;
+  }
+  
+  .cub-input .text-input {
+    float: left;
+    width: 26.66%;
+  }
+  
+  .cub-input .text-input:nth-child(1),
+  .cub-input .text-input:nth-child(2) {
+    margin-right: 10%;
+  }
+  
+  .ns-radio-btn input[type="radio"],
+  .ns-check-box input[type="checkbox"] {
+    visibility: hidden;
+  }
+  .productspace{
+      margin-top: 70px;
+  }
+  .tick{
+      height: 20px;
+      width: 20px;
+  }
+  
+  .addsubmit{
+      position: absolute;
+      bottom: 28px;
+      left:720px;
+  }

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-xl-12 text-right">
+        <button type="button" class="addbutton btn btn-outline-primary" (click)="editEx()">
+        <img src="../../../../../assets/images/plus.png" alt="">
+        </button>
+    </div>
+    <div class="col-md-12">
+        <app-card cardTitle="Division And Rack Details" [options]="false" blockClass="table-border-style">
+            <div class="table-responsive">
+                <table class="table table-striped recrftable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                        <tr>
+
+                          <th>Division</th>
+                          <th>Rack</th>
+                         
+                          <th>Quantity</th>
+                          <th>Used</th>
+                          <th>Avalible</th>
+                          <th>percentage</th>
+                        </tr>
+                      </thead>
+                   
+                     
+                      <tbody>
+                        <tr *ngFor="let ex1 of final">
+                          <td>{{ex1.division}}</td>
+                          <td>{{ex1.rack}}</td>
+                          <td>{{ex1.quantity}}</td>
+                          <td >{{ex1.used}}</td>
+                          <td  > {{ex1.avalible}}
+                           </td>
+                           <td  [ngClass]="{
+                            'positive':ex1.percentage > '50.00',
+                            'negative': ex1.percentage <'50.00',
+                            'full': ex1.percentage =='100.00',
+                            'empty': ex1.percentage =='0.00'
+
+                          }">{{ex1.percentage}}%</td>
+                         
+                          <!-- <td>  <button (click)="editEx(ex1)" style="border:none;background: none;"> <i class="fa fa-edit"></i> </button>
+                          <button (click)="delpc(ex1._id)" style="border:none;background: none;"> <i class="fa fa-trash"></i> </button> </td> -->
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>

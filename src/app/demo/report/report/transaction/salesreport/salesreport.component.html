@@ -1,0 +1,53 @@
+<div class="row" >
+
+  <div class="col-xl-12 text-right">
+    <button type="button" class="btn btn-primary" (click)='exportToExcel(profitData)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+  </div>
+
+    <div class="col-xl-12">
+        <app-card cardTitle="Sales-Report" [options]="false" blockClass="table-border-style" >
+        <div class="month" style="text-align: right; "> <b style="color: black;">Select Month &nbsp;</b>
+            <select (change)="setchange($event.target.value)" style="width: 183px; height: 30px;">
+                <option  value='1'>January</option>
+                <option value='2'>February</option>
+                <option value='3'>March</option>
+                <option value='4'>April</option>
+                <option value='5'>May</option>
+                <option value='6'>June</option>
+                <option value='7'>July</option>
+                <option value='8'>August</option>
+                <option value='9'>September</option>
+                <option value='10'>October</option>
+                <option value='11'>November</option>
+                <option  value='12'>December</option>
+                </select> 
+          </div>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  >
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th> Item Code</th>  
+                <th> Description </th>
+                <th>Quantity </th>
+                <th> Total </th>
+                <!-- <th> Profit</th>  -->
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of profitData'>
+                <td>{{data.idate}}</td>
+                <td>{{data.itemCode}}</td>
+                <td>{{data.description}} </td>
+                <td>{{data.custQuantity}} </td>
+                <td>{{data.invoiceTotal | number:'1.2-2'}} </td>
+                <!-- <td>{{data.profit}}</td> -->
+             </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+    
+      </div>
+</div>

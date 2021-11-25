@@ -1,0 +1,311 @@
+.card .card-block i img{
+  height: 60px;
+  width: 60px;
+  margin: 0 0 10px 0;
+}
+
+
+.card .card-block i img{
+  height: 60px;
+  width: 60px;
+  margin: 0 0 10px 0;
+}
+
+.btn-secondary{
+  background-color: white;
+  color: black;
+  border-color: black;
+  height: 40px;
+  width: 140px;
+  padding: 0px!important;
+  outline-color: none;
+}
+.btn-secondary:hover{
+  background-color: black;
+  color: white;
+}
+.f-w-300{
+font-weight: bold;
+}
+.square {
+  height: 13px;
+  width: 13px;
+  align-items: center;
+  background-color: rgb(131, 7, 7);
+}
+.table tr th {
+    font-size: 11px;
+    color: rgb(75, 72, 72);
+}
+.table tr td {
+    color: rgb(126, 125, 125);
+}
+.parallelogram {
+width: 13px;
+height: 13px;
+transform: skew(20deg);
+background: #555;
+}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+#triangle-down {
+ width: 0;
+ height: 0;
+  border-left: 10px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid rgb(13, 201, 123);
+}
+
+#triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid red;
+}
+// VARIABLES
+$default-delay: .2s;
+$bars: 15;
+$graph-height: 253px;
+
+// MIXINS
+
+//Horizontal Bar Color Mixin 
+@mixin stat-bar($color-dark, $color-light, $direction, $dir-webkit) {
+background-image: -webkit-linear-gradient($dir-webkit, $color-light 0%, $color-light 47%, $color-dark 50%, $color-dark 100%);
+background-image: linear-gradient($direction, $color-light 0%, $color-light 47%, $color-dark 50%, $color-dark 100%);
+}
+// Animation Mixin 
+@mixin bar-animation($time, $dimension) {
+visibility: hidden;
+@if $dimension == width {
+  width: 0;
+  -webkit-animation: animate-width; 
+  -moz-animation: animate-width;
+  animation: animate-width;
+}
+@if $dimension == height {
+  height: 0;
+  -webkit-animation: animate-height; 
+  -moz-animation: animate-height;
+  animation: animate-height;
+}
+animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+-webkit-animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+-moz-animation-timing-function: cubic-bezier(.35,.95,.67,.99);
+animation-duration: $time*2;
+-webkit-animation-duration: $time*2;
+-moz-animation-duration: $time*2;
+animation-fill-mode: forwards;
+-webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes animate-width {
+0% {
+  width: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+@-moz-keyframes animate-width {
+0% {
+  width: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+@keyframes animate-width {
+0% {
+  width: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+@-webkit-keyframes animate-height {
+0% {
+  height: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+@-moz-keyframes animate-height {
+0% {
+  height: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+@keyframes animate-height {
+0% {
+  height: 0;
+}
+100% {
+  visibility: visible;
+}
+}
+
+//STYLES
+body {
+background-color: #3b4150; 
+font-family: arial, sans-serif;
+color: #cdcdcd;
+}
+#bar-chart {
+height: 260px;
+width: 80%;
+position: relative;
+margin: 50px auto 0;
+* {
+ box-sizing: border-box; 
+}
+.graph {
+  height: 283px;
+  position: relative; 
+}
+.bars {
+  height: $graph-height;
+  padding: 0 4%;
+  position: absolute;
+  width: 100%;
+  z-index: 10; 
+}
+.bar-group {
+  display: block;
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 12%;
+  margin-right: 10%;
+  &:last-child {
+   margin-right: 0; 
+  }
+  .bar {
+    @include bar-animation($default-delay, height);
+    box-shadow: 0px 0 2px rgba(0,0,0,.15);
+    border: 0px solid #2d2d2d; 
+    border-radius: 0px 0px 0 0;
+    bottom: 0;
+    cursor: pointer;
+    height: 0;
+    position: absolute;
+    text-align: center;
+    width: 25%; 
+    &:nth-child(2) {
+      left: 35%;
+    }
+    &:nth-child(3) {
+      left: 70%;
+    }
+    span {
+     display: none; 
+    }
+  }
+  @for $i from 1 through 15 {
+    .bar-#{$i} {
+      animation-delay: $default-delay+.1*$i;
+      -webkit-animation-delay: $default-delay+.1*$i;
+    }
+  }
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.x-axis {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  li {
+    float: left;
+    margin-right: 10.5%;
+    font-size: 11px;
+    width: 11.5%;
+    &:last-child {
+     margin-right: 0; 
+    }
+  }
+}
+.y-axis {
+  position: absolute;
+  text-align: right;
+  width: 100%; 
+  li {
+    border-top: 1px solid #585858;
+    display: block;
+    height: $graph-height/4;
+    width: 100%;
+    span {
+      display: block;
+      font-size: 11px;
+      margin: -10px 0 0 -60px;
+      padding: 0 10px;
+      width: 40px;  
+    }
+  }
+}
+.stat-1 {
+  @include stat-bar(#aa281f, #c52626, to right, left);
+}
+.stat-2 { 
+  @include stat-bar(#accf4a, #b2d657, to right, left);
+}
+.stat-3 {
+  @include stat-bar(#4fb4d3, #4da6c2, to right, left);
+}
+}
+
+
+
+.btn-secondary {
+background-color: white;
+color: black;
+border-color: black;
+height: 40px;
+width: 140px;
+padding: 0px !important;
+outline-color: none;
+}
+#piechart_3d{
+width: 400px;
+height: 280px;
+ padding: 0;
+ margin-left: 40px;
+}
+
+@media only screen and (max-width: 320px) {
+
+.btn-secondary{
+background-color: white;
+color: black;
+border-color: black;
+height: 40px;
+width: 110px!important;
+padding: 0px !important;
+outline-color: none;
+}
+#piechart_3d{
+width: 470px;
+height: 320px;
+ padding: 0;
+ margin-left: 0px!important;
+}
+}
+@media only screen and (max-width: 768px){
+#piechart_3d{
+  width: 470px;
+  height: 320px;
+   padding: 0;
+   margin-left: 100px;
+}
+
+}

@@ -1,0 +1,69 @@
+<div class="row" [hidden]='forBill==false'>
+    <!-- <div class="col-lg-12 text-right">
+        <button type="button" class="btn btn-outline-primary" (click)='invoiceform()'> 
+        <img src="../../../../../assets/images/plus.png" alt=""> 
+        </button>
+    </div> -->
+
+    <div class="col-xl-12">
+        <app-card cardTitle="Discount Details" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Invoice Number </th>
+                <th> Date </th>
+                <th> Customer Name </th>
+                <th> GST Number </th>
+               
+                <th> Contact Number </th>
+                <th> Action </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of getData'>
+                <td>{{data.invoiceNumber}}</td>
+                <td>{{data.date}} </td>
+                <td>{{data.name}} </td>
+                <td>{{data.cost}} </td>
+               
+                <td>{{data.contactNumber}} </td>
+                <td>
+                   <button style="background: none; border: none;" (click)='show(data)'> <i class="fa fa-eye"></i>  </button> &nbsp;&nbsp;
+                   </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+      </div>
+</div>
+
+
+
+
+<section class="invoicediv" *ngIf='table'>
+    <app-card cardTitle="Product-Wise discount details" [options]="false" blockClass="table-border-style">
+        <div class="table-responsive">
+            <table class="table table-striped"  >
+                <thead>
+                <tr>
+                  <th> Item Code </th>
+                  <th> Discount/% </th>
+                  <th> Discount Amount </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let data of getDa'>
+                  <td>{{data.itemCode}}</td>
+                  <td>{{data.discount}} </td>
+                  <td>{{data.discountAmount}}</td>
+                </tr>
+                </tbody>
+              </table>
+        </div>
+      </app-card>
+</section>
+
+
+

@@ -1,0 +1,56 @@
+<div class="row" >
+    <div class="col-xl-12">
+      <app-card cardTitle="Expense Details" [options]="false" blockClass="table-border-style">
+        <form class="receiptaddform"[formGroup] = "myform" (ngSubmit) = "onsubmit(myform.value)">
+          <div class="row">
+            <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+            <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+            <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+            <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+
+            <div class="col-lg-6"> 
+              <label for="date">Month:</label> <br>  
+              <input type="month" class="form-control" placeholder="Enter date" formControlName="date" >
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">Client-Related:</label> <br>  
+              <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="client"> 
+              
+            </div>
+           
+        
+          <div class="col-lg-6"> <label for="itemcode">Transportation :</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="transportation"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Food/Utility:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="foodutility"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Rental:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="rental">    
+          </div> 
+          <div class="col-lg-6"> <label for="itemcode">Health:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="health"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Electricity:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="electricity">    
+          </div> 
+          <div class="col-lg-6"> <label for="itemcode">Labour-Salary:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="laboursal"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Others:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="others">    
+          </div> 
+        </div>
+      <div class="row sub"> 
+      <div class="submit"  >  <button type="submit" > Submit </button>  </div>
+    </div>
+  
+        </form>
+      </app-card>
+    </div>
+  </div>
+  

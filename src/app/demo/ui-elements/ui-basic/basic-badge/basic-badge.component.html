@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-xl-12 text-right">
+  <button type="button" class="btn btn-primary"  (click)='exportToExcel(ret)'>Export &nbsp; <i class="fas fa-file-export"></i></button> 
+</div>
+  <div class="col-xl-12">
+    <app-card cardTitle="Stock Avalibility" [options]="false" blockClass="table-border-style">
+     
+      <section >
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Total Product Availability List</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Category Wise Availability List</a>
+                            <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Project Tab 3</a> -->
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                           <div class="table-responsive">
+        <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+          <thead>
+          <tr>
+            <th>Select</th>
+            <th>Item-Code</th>
+            <th> Description </th>
+            <th> Quantity </th>
+            <th> UOM </th>
+            <th>Return-Product </th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let data of ret'>
+              <td><input type="checkbox" (change)='getValue(data,$event.target.checked)'></td>
+              <td>{{data.itemCode}}</td>
+              <td>{{data.description}}</td>
+              <td>{{data.custQuantity}}</td>
+              <td>pcs</td>
+              <td>{{data.returnproduct}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      
+
+      </div>
+          </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <label for="">Category</label>
+                        <select [(ngModel)]="selected" name="finalDiv" placeholder="select" (ngModelChange)="onOptionsSelected()">
+                          <option *ngFor="let data of gory" [ngValue]="data">{{data.categor}}</option>
+                      </select>
+                         
+                      <div class="table-responsive">
+                        <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                          <thead>
+                          <tr>
+                            <th>Select</th>
+                            <th>Item-Code</th>
+                            <th> Description </th>
+                            <th> Quantity </th>
+                            <th> UOM </th>
+                            <th>Return-Product </th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor='let data of catigorydivision'>
+                              <td><input type="checkbox" (change)='getValue(data,$event.target.checked)'></td>
+                              <td>{{data.itemCode}}</td>
+                              <td>{{data.description}}</td>
+                              <td>{{data.custQuantity}}</td>
+                              <td>pcs</td>
+                              <td>{{data.returnproduct}}</td>
+                
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary"  (click)='exportToExcel(catigorydivision)'>Export</button> 
+
+                      </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </app-card>
+  </div>
+
+</div>
+

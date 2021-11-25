@@ -1,0 +1,43 @@
+<div class="row">
+<div class="col-lg-12 text-right">
+  <button type="button" class="btn btn-outline-primary" (click)='addforms()'>
+    <img src="../../../../../assets/images/plus.png" alt="">
+</button>
+</div>
+<div class="col-md-12">  
+  <app-card cardTitle="Cash-In Cheque" [options]="false" blockClass="table-border-style"> 
+    <div class="table-responsive table-container" >  
+      <table  class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">  
+        <thead>  
+          <tr> 
+            <th>Branch </th>  
+            <th>Cheque Number</th>
+            <th>Account Number</th>
+            <th>Date On Cheque</th>   
+            <th>Amount</th>
+            <th>Beneficiary</th>
+            <th>Presented On</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>  
+        </thead>  
+        <tbody>
+            <tr *ngFor="let data of getCheque">
+                <td>{{data.bankBranch}}</td>
+                <td>{{data.chequeNumber}}</td>
+                <td>{{data.accountNumber}}</td>
+                <td>{{data.dateonCheque}}</td>
+                <td>{{data.amount}}</td>
+                <td>{{data.beneficiary}}</td>
+                <td>{{data.presentedOn}}</td>
+                <td>{{data.remarks}}</td>
+                <td><button style="background:none; border: none;" (click)='editCheque(data)'><i style="color: #007bff;"class="fa fa-edit">  </i></button> &nbsp;&nbsp; 
+                    <button  style="background:none; border: none;" (click)='deleteCheque(data._id)'> <i style = "color:red;"class="fa fa-trash"> </i> </button>
+                </td>
+            </tr>
+        </tbody>
+      </table> 
+    </div>
+  </app-card>
+</div>
+</div>

@@ -1,0 +1,118 @@
+ <!-- <div style="background: white; padding: 30px 20px;">
+  <form [formGroup]="SaleForm" (ngSubmit)="onSubmit(SaleForm.value)" >
+    <input type="hidden"  formControlName='_id'  >
+    <div class="row">
+      <div class="col-3">
+        <b>Customer Name</b>
+      </div>
+      <div class="col-3">
+        <input type="text" class="text-input" formControlName='name'  >
+      </div>
+      <div class="col-3">
+        <b>GST Number</b>
+      </div>
+      <div class="col-3">
+        <input type="text" class="text-input" formControlName='cost' >
+      </div>
+    </div>
+      <ul *ngIf='searchSupplier.length>2'>
+        <li *ngFor="let hero of getSuppliers |filter:searchSupplier" (click)='getSuppliersData(hero)' style="cursor:pointer;">
+          <i class="fas fa-angle-down"></i> &nbsp;{{hero.name}}
+        </li>
+      </ul>
+    </div> 
+    <div class="row">
+      <div class="col-3">
+        <b>Contact Number</b>
+      </div>
+      <div class="col-3">
+        <input type="text" class="text-input" formControlName='cost' >
+      </div>
+      <div class="col-3">
+        <b>Alternative Contact Number</b>
+      </div>
+      <div class="col-3">
+        <input type="text" class="text-input" formControlName='alternateNumber' >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <b>Shipping Address</b>
+      </div>
+      <div class="col-3">
+        <textarea type="text" class="text-input" formControlName='shipAddress'></textarea>
+      </div>
+      <div class="col-3">
+        <b>Billing Address</b>
+      </div>
+      <div class="col-3">
+        <textarea type="text" class="text-input" formControlName='billAddress'></textarea>
+      </div>
+    </div>
+    <input type="hidden" formControlName='credit'>
+    <input type="hidden" formControlName='balance'>
+    <input type="hidden" formControlName='toiv'>
+    <input type="hidden" formControlName='amount'>
+   <input type="hidden" formControlName='overAllInvoiceTotal'>
+    <div class="row">
+      <div class="col-3">
+        <b>Date</b>
+      </div>
+      <div class="col-3">
+        <input type="text" class="text-input" formControlName='date' [(ngModel)]="dater">  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">Item Code</div>
+      <div class="col-lg-2">Description</div>
+      <div class="col-lg-2">Unit Rate <small>pcs</small></div>
+      <div class="col-lg-2">Quantity</div>
+      <div class="col-lg-2">GST</div>
+      <div class="col-lg-2">Invoice Amount </div>
+    </div>
+   
+    <div class="searchlist1" >
+      <ul *ngIf='searchText.length>1' >
+        <li *ngFor="let hero of searchData |filter:searchText" (click)='getProduct(hero)'  >
+          <i class="fas fa-angle-down"></i> &nbsp;{{hero.itemCode}}
+        </li>
+      </ul>
+      </div>
+   
+
+    <div formArrayName="products" *ngFor="let a of SaleForm.get('products').controls; let i = index">
+    <div [formGroupName]="i" style="margin-bottom: 10px;">
+      <div class="row">
+        <div class="col-lg-2"><input type="text" formControlName='itemCode' readonly ></div>
+        <div class="col-lg-2">  <input type="text" formControlName='description' readonly></div>
+        <div class="col-lg-2"><input type="number" formControlName='unitRate' readonly></div>
+        <div class="col-lg-2"><input type="number" formControlName='custQuantity'></div>
+        <input type="hidden" formControlName='idate' [(ngModel)]="dater">
+       <input type="hidden" value="{{a.controls.col34.value}}" readonly>
+       <div class="col-lg-2"> <input type="text" formControlName='cgstsgst' readonly>
+
+        </div>
+        <div class="col-lg-2 indel">
+          
+          <input type="number" value="{{a.controls.col33.value}}" size="8" readonly>
+          <button type="button" class="btn btn-primary" (click)="removeGroup(i)">ee</button> &nbsp;&nbsp;
+
+          <button (click)="deleteAddressGroup(i)"> <i class="fas fa-remove" style="color:red"></i> </button>
+        </div>
+        <input type="number" formControlName='CGST'hidden>
+        <input type="number" formControlName='SGST'hidden>
+        <input type="number" formControlName="col34" hidden [ngModel]="(a.controls.CGST.value + a.controls.SGST.value)">
+        <input type="number" formControlName="col33" hidden [ngModel]="(a.controls.unitRate.value * a.controls.custQuantity.value)/100*(a.controls.SGST.value+a.controls.CGST.value)+(a.controls.unitRate.value * a.controls.custQuantity.value)">
+      </div>
+     
+    </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="add()" ><i class="fas fa-plus" style="margin-left: 3px;"></i></button> &nbsp;&nbsp;
+    <button type="submit" class="btn btn-light" ><img src="../../../../assets/images/submit.png" class="tick"></button>
+
+    <div class="right-allign">
+      <span>Total(Pre Tax):</span> {{a.controls.col35.value}}
+    </div>
+  </form>
+  </div> -->

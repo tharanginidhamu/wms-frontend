@@ -1,0 +1,33 @@
+.bankacstmt{
+    background-color: rgb(245, 235, 235);
+    padding: 2%;
+}
+.bankacstmt .row{
+    margin: 2% 0;
+}
+.bankacstmt .bankname h6{
+    line-height: 10px;
+}
+.bankacstmt .bastmt h6{
+    margin-top: 12%;
+}
+.bankacstmt .custname h6{
+    line-height: 10px;
+}
+.custhead{
+    background-color: rgb(245, 235, 235);
+    color: black;
+}
+.custheadn{ color: black;}
+.banktable{
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 2%;
+}
+.banktable tr{ margin: 2% 0; padding: 2% 0;}
+.banktable th, .banktable td{ padding: 1%; }
+.banktable .banktablehead{
+    background-color: rgb(123, 127, 128);
+}
+.total{  text-align: center; }

@@ -1,0 +1,404 @@
+<div class="row">
+    <div class="col-lg-12">
+
+      <div class="row" [hidden]='test==false'>
+        <div class="col-lg-12" >
+          <form [formGroup]="SaleForm" (ngSubmit)="onSubmit(SaleForm.value)" >
+            <input type="hidden" formControlName='_id'>
+          <input type="text" size="50" placeholder="Search Customer Name" class="form-control searchbar" [formControl]="search_supply">
+          <div style="width: 100%;">
+            <div class="searchlist">
+              <ul *ngIf='itemLength>2'>
+                <li *ngFor="let hero of result_supply" (click)='getSuppliersData(hero)' style="cursor:pointer;">
+                  <i class="fas fa-angle-down"></i> &nbsp;{{hero.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <div class="row possupplier " >
+            <!-- <div class="col-lg-12 text-right"> <input type="text" size="50" placeholder="Search" class="search1"> </div> <br> -->
+            <div class="col-lg-6">
+              <table class="table1 ">
+                <input type="hidden" formControlName='branchId'>
+                <input type="hidden" formControlName='branchName'>
+                <input type="hidden" formControlName='branchLocation'>
+                <tr>
+                  <td> Customer Name </td>
+                  <td> <input type="text" placeholder="Enter Customer Name" class="form-control" formControlName='name'>   </td>
+                </tr>
+                <tr> 
+                  <td> Contact Number </td>
+                  <td> <input type="text" placeholder="Enter Contact Number" class="form-control" formControlName='contactNumber'> </td>
+                </tr>
+                <tr>  
+                  <td> Shipping Address </td>
+                  <td> <textarea name="" id="" placeholder="Enter Shipping Address" class="form-control" formControlName='shipAddress'></textarea> </td>
+                </tr>
+                <tr>
+                  <td> Date </td>
+                  <td> <input type="text" formControlName='date'  class="form-control" [(ngModel)]="dater"> </td>
+                </tr>
+              </table>
+            </div>
+            <input type="hidden" formControlName='overAllInvoiceTotal'>
+            <input type="hidden" formControlName='balance'>
+
+            <div class="col-lg-6">
+              <table class="table1">
+                <tr>
+                  <td> GST Number </td>
+                  <td> <input type="text" placeholder="Enter GST Number" class="form-control" formControlName='cost'> </td>
+                </tr>
+                <tr> 
+                  <td> Alternate Number </td>
+                  <td> <input type="text" placeholder="Enter Alternate Number" class="form-control" formControlName='alternateNumber'> </td>
+                </tr>
+                <tr>  
+                  <td> Billing Address </td>
+                  <td> <textarea name="" id="" placeholder="Enter Billing Address"  class="form-control" formControlName='billAddress'></textarea> </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <br>
+         <input type="text" size="50" placeholder="Search Item Code" class="form-control searchbar" [formControl]="search_item" >
+         
+          <br>
+          
+          <div class="searchlist1" >
+            <ul  *ngIf='itemLength2>0' >
+              <li *ngFor="let he of result_list" (click)='getProduct(he)'  style="cursor:pointer;">
+                <i class="fas fa-angle-down"></i> &nbsp;{{he.itemCode}}  &nbsp;{{he.description}}
+              </li>
+            </ul>
+            </div>
+        
+         
+          <div class="row possuppliertable">
+            <div class="col-12">
+              <table class="tableadd table-responsive">
+                <thead>
+                <tr>
+                  <th> Item Code </th>
+                  <th> Description </th>
+                  <th> Unit Rate </th>
+                  <th> Quantity </th>
+                  <th>Cost/<sub>pcs</sub></th>
+                  <th> GST </th>
+                  <th> Invoice-Amount </th>  
+                  <th> Reset </th>
+                  <th> Remove </th>
+                </tr>
+              </thead>
+              <tbody formArrayName="products" *ngFor="let a of SaleForm.get('products')['controls']; let i = index">
+                <tr [formGroupName]="i" style="margin-bottom: 10px;">
+                  <td> <input type="text" size="8" formControlName='itemCode'class="form-control" type="text" readonly> </td>  
+                  <td> <input type="text" size="30" formControlName='description' class="form-control" type="text" readonly> </td>
+                  <td> <input type="text" size="6" formControlName='unitRate' class="form-control" type="number" > </td>
+                  <td> <input type="text" size="6" formControlName='custQuantity' class="form-control" type="number" >
+
+                    <input type="hidden" formControlName='idate' [(ngModel)]="dater" class="form-control">
+                    <input type="hidden" formControlName='category'  style="text-transform: capitalize;" class="form-control">
+                   </td>
+                   <td>  <input type="text" size="6" value="{{a.controls.gstunit.value}}" class="form-control" readonly> </td>
+                  <td> <input type="text" size="6" formControlName='cgstsgst' type="text" class="form-control" readonly> </td>
+                  <td> <input type="text" size="12" value="{{a.controls.col33.value}}" class="form-control" readonly> </td>
+                  <td> 
+                    <button (click)="removeGroup(i)" type="button"> <i class="fas fa-refresh" style="color: black;"></i> </button> 
+                   
+                 </td>
+                 <td> <button (click)="deleteAddressGroup(i)"> <i class="fas fa-remove" style="color:red"></i> </button>  </td>
+                 <td> <input type="number" formControlName='CGST' hidden class="form-control"></td>
+                 <td><input type="number" formControlName='SGST' hidden class="form-control"> </td>
+                
+                 
+                 <!-- <input type="number" formControlName="discount" class="form-control" > -->
+                 <input type="number" formControlName="col34" hidden [ngModel]="(a.controls.CGST.value + a.controls.SGST.value)" class="form-control">
+                 <input type="number" formControlName="col33" hidden [ngModel]="(a.controls.unitRate.value * a.controls.custQuantity.value)/100*(a.controls.SGST.value+a.controls.CGST.value)+(a.controls.unitRate.value * a.controls.custQuantity.value)" class="form-control">
+                 <input type="number" formControlName="gstcals"  hidden  [ngModel]="(a.controls.unitRate.value )/100*(a.controls.SGST.value+a.controls.CGST.value)" class="form-control"> 
+                 <input type="number" formControlName="gstunit"  hidden  [ngModel]="(a.controls.gstcals.value + a.controls.unitRate.value )" class="form-control"> 
+
+                </tr>
+              </tbody>
+              </table><br>
+              <!-- <input type="text" [ngModel]="converter.toWords(13)"> -->
+              <button type="button" class="btn btn-primary" (click)="addItem()" ><i class="fas fa-plus"></i> </button>
+              <button type="submit" class="btn btn-primary"  > <i class="fa fa-check-circle"></i></button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+      
+      
+         <section class="invoicediv"  *ngIf='table'>
+           <!-- <div  id="print-section">  -->
+           <div>
+
+         
+           <div *ngFor='let data of invoice | slice:-1' id="print-section">
+            
+          <div class="row rowmargin" >
+            <div class="col-2 brandtitle">
+              
+              <h3>Technonix</h3>
+              <button id="printPageButton" class="btn btn-primary" (click)='editData(data)'><i class="fas fa-edit"></i></button>
+           
+            </div>
+            <div class="col-7">
+              <h4>Technonix Infosystem Pvt Ltd.</h4>
+              <small>Present The Future</small>
+              <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+                +91 9080095906 info@technonix.co.in
+              </p>
+            </div>
+            <div class="col-3 text-center brandtype">
+              <h3> GST Invoice </h3>
+              <h5> Customer </h5>
+            </div>
+          </div>
+          <div class="row rowmarge">
+            <div class="col-9">
+              <div class="row borderdiv">
+                <div class="col-3">
+                  <b> Branch Address </b>
+                  <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+                    +91 9080095906 info@technonix.co.in
+                  </p>
+                </div>
+                <div class="col-3">
+                  <b> Warehouse Address </b>
+                  <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+                    +91 9080095906 info@technonix.co.in
+                  </p>
+                </div>
+                <div class="col-3">
+                  <b> Billing Address </b>
+                  <p>{{data.billAddress}}
+                  </p>
+                </div>
+                <div class="col-3">
+                  <b> Shipping/Delivery Address </b>
+                  <p>{{data.shipAddress}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 invoicedate">
+  
+              <div class="row rowmarge">
+                <div class="col-6">
+                  <p> GST Inv No </p>
+                  <p> GST Inv Date </p>
+                  <p> Order No </p>
+                  <p> Cust PO No  </p>
+                  <p> Order Date </p>
+                  <p> Payment Term </p>
+                  <p> Due Date </p>
+                </div>
+                <div class="col-6">
+                  <p> : {{data.invoiceNumber}} </p>
+                  <p> : {{data.date}}</p>
+                  <p> : </p>
+                  <p> : </p>
+                  <p> : 08 12 2019 </p>
+                  <p> : Immediate </p>
+                  <p> : 12 01 2020 </p>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="row rowmargin">
+            <div class="col-3">
+              <p>Pkg Slip No : </p>
+              <p> Product Category : </p>
+              <p>No of cases :</p>
+            </div>
+            <div class="col-3">
+              <p>Pkg Slip No : </p>
+              <p> Product Category : </p>
+              <p>No of cases :</p>
+            </div>
+            <div class="col-3">
+              <p>Pkg Slip No : </p>
+              <p> Product Category : </p>
+              <p>No of cases :</p>
+            </div>
+            <div class="col-3">
+              <p>Pkg Slip No : </p>
+              <p> Product Category : </p>
+              <p>No of cases :</p>
+            </div>
+          </div>
+          <div class="row rowmargin">
+            <div class="col-12 invoicetable">
+              <table >
+                <tr>
+                  <th rowspan="2"> Item Code </th>
+                  <th rowspan="2">Description of Goods </th>
+                  <th rowspan="2"> HSN Code </th>
+                   <th rowspan="2"> Quantity </th>
+                  <th rowspan="2"> Unit Rate </th>
+                   <th rowspan="2">UOM</th>
+                  <th rowspan="2"> Sales Value </th>
+                  <th colspan="2"> CGST </th>
+                  <th colspan="2"> SGST</th>
+                  <!-- <th rowspan="2">Cost/<sub>pcs</sub> </th> -->
+                  <th rowspan="2">Total Amount</th>
+                </tr>
+                <tr >
+                  <th>Rate(%)</th>
+                  <th>Amount</th>
+                  <th>Rate(%)</th>
+                  <th>Amount</th>
+                </tr>
+                <tr *ngFor='let value of (data.products)'>
+                  <td> {{value.itemCode}} </td>
+                  <td class="description">{{value.description}} </td>
+                  <td> {{value.hsnCode}} </td>
+                  <td>{{value.custQuantity}}</td>
+                  <td>{{value.unitRate | number:'1.2-2'}}</td>
+                    <td>pcs</td>
+                  <td>  {{value.total | number:'1.2-2'}} </td>
+                  <td>  {{value.CGST}}</td>
+                  <td>  {{value.CGSTAmount | number:'1.2-2'}} </td>
+                  <td>  {{value.SGST}}</td>
+                  <td>  {{value.SGSTAmount | number:'1.2-2'}} </td>
+                  <!-- <td>  {{value.gstUnit | number:'1.2-2'}} </td> -->
+                  <td>  {{value.invoiceTotal | number:'1.2-2'}} </td>
+          
+                </tr>
+                <tr>
+                  <td rowspan="2">Total</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td ></td>
+                  <td > </td>
+                  <td>{{data.overAllCGSTUnit | number:'1.2-2'}}</td>
+                  <td> </td>
+                  <td>{{data.overAllSGSTUnit | number:'1.2-2'}}</td>
+                  <!-- <td></td> -->
+                  <td rowspan="2">{{data.overAllInvoiceAmount | number:'1.2-2'}} </td>
+                  <!-- <td>  <input type="text" [ngModel]="word" value="data.overAllInvoiceAmount">
+                  </td> -->
+                </tr>
+              </table>
+            
+            </div>
+          </div>
+         
+            <div class="col-12" style="margin-top: 70px;"><span>{{data.inWords | uppercase}}</span></div> 
+
+        
+        
+          <div class="row rowmarginbottom">
+           
+            <div class="col-3 text-center signbox">
+              Receiver's Remarks & <br> Signature
+            </div>
+            <div class="col-9">
+              <div class="row">
+                <div class="col-12"><p class="invoicefootertext">One of the major problems with invoicing is that many of the tools available make it difficult for a company to customise the invoice. There may be a set range of templates available, but these don’t always work for everyone</p></div>
+              </div>
+              <div class="row">
+                <div class="col-8"> <b> Bank Details : </b> <small> A/c: State Bank of India </small> <b>Account No: </b> <small> 00000001235461 </small> <b>IFSC Code: </b> <small> SBIN0014560</small> <br> <b>MICR Code:</b> <small>SB0014560</small> </div>
+                <div class="col-4"> <b> <br> FOR : Technonix Infosystem Pvt Ltd.</b> </div>
+              </div>
+              <div class="row">
+                <div class="col-12"> <b>Customer Care Number : 044 0123 5102 Whatsapp No : 9876543210 </b>  </div>
+              </div>
+              <div class="row">
+                <div class="col-12"> <b>SUBJECT TO CHENNAI JURIDICTION</b> </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-3 terms">
+              FOR TERMS AND CONDITIONS SEE OVERLEAF
+              <img src="1.png" alt="">
+              <img src="1.png" alt="">
+            </div>
+            <div class="col-6 text-center">
+              <b>fjslfj | dms | fms | wms | product | service | portal </b>
+            </div>
+            <div class="col-3 text-center">
+              Authorized Signatury
+            </div>
+          </div>
+          <div>&nbsp; <button (click)="back()" class="btn btn-primary" ><i class="far fa-arrow-alt-circle-left"></i></button> </div>
+          <div>
+          
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-primary" id="printPageButton"  [useExistingCss]="true" printSectionId="print-section" ngxPrint>Print Invoice
+              </button>
+            </div>
+           
+    </div>
+  </div>
+    <br>
+    <div class="row" style="padding:40px"  *ngFor='let data of invoice | slice:-1' id="print-section1" >
+
+      <div >
+        <table style="border: none; width: 100%;" class="col-12 invoicetable">
+          <thead>
+            <tr>
+              <th colspan="3">Delivery Chellon</th>
+              <!-- <th>{{data.date}}</th> -->
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h4>To</h4>
+                <p>{{data.shipAddress}} <br>
+               </p>
+              </td>
+              <td colspan="2">
+                <h4>Purchase Order Date - {{data.date}}</h4>
+               
+                <p>Technonix Infosystem<br>
+                  No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+                  +91 9080095906 info@technonix.co.in</p>
+              </td>
+            </tr>
+          </thead>
+        </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ItemCode</th>
+              <th scope="col">Description</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody *ngFor='let value of (data.products)'>
+            <tr>
+              <th scope="row">{{value.itemCode}}</th>
+              <td>{{value.description}}</td>
+              <td>{{value.custQuantity}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="printPageButton"  [useExistingCss]="true" printSectionId="print-section1" ngxPrint>Print chellon
+        </button>
+      </div>
+     
+    </div>
+   
+        </div>
+
+        </section>   
+
+    </div>
+  </div>   
+ 
+
+
+
+
+ 

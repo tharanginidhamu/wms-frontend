@@ -1,0 +1,107 @@
+<div class="row" [hidden]='val==true'>
+  <div class="col-xl-12 text-right">
+    <button type="button"  class="btn btn-primary" (click)='exportToExcel(pro)'>Export &nbsp; <i class="fas fa-file-export"></i></button>
+  </div>
+      <div class="col-xl-12">
+        <app-card cardTitle="Purchase-Report" [options]="false" blockClass="table-border-style">
+            <div class="month" style="text-align: right; "> <b style="color: black;">Select Month</b>
+                <select (change)="setchange($event.target.value)" style="width: 183px; height: 30px;">
+                    <option  value='January'>January</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option  value='December'>December</option>
+                    </select> 
+              </div>
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Date </th>
+                <th>Suppliers</th>
+                <th> Invoice Number </th>
+                <th> Invoice Amount </th>
+                <th>View</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of pro'>
+                <td>{{data.date}}</td>
+                <td>{{data.supplier}}</td>
+                <td>{{data.invoiceNo}}</td>
+                <td>{{data.invoiceAmount | number:'1.2-2'}}</td>  
+                <td>
+                  <button (click)='show(data)'><i class="fa fa-eye"></i> </button> 
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+       
+      </div>
+    </div>
+
+    <section class="supplierview"  [hidden]='val==false'>
+      <div class="row sviewform">
+        <div class="col-lg-2">
+          <label for="name"> <b></b> Supplier Name: </label> <br>
+    
+        </div>
+        <div class="col-lg-3">
+          <label for="nameans"> {{name}} </label> <br>
+    
+        </div>
+        <div class="col-lg-1">
+          <label for="contact"> <b> Date: </b> </label> <br>
+    
+        </div>
+        <div class="col-lg-2">
+          <label for="contactans"> {{date}}</label> <br>
+    
+        </div>
+        <div class="col-lg-2">
+          <label for="contact"> <b> Invoice-No: </b> </label> <br>
+    
+        </div>
+        <div class="col-lg-2">
+          <label for="contactans"> {{invoice}}</label> <br>
+    
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="sviewtable">
+            <thead>
+              <tr>
+               
+                <th scope="col">itemCode</th>
+                <th scope="col">description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let dat of arr'>
+                
+                <td>{{dat.itemCode}} </td>
+                <td>{{dat.description}}</td>
+                <td>{{dat.custQuantity}}</td>
+                <td>{{dat.total}}</td>
+      
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div> <button (click)='back()'>back</button> </div>
+      
+    </section>
+  

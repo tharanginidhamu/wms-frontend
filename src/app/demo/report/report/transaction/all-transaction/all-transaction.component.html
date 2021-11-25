@@ -1,0 +1,58 @@
+<div class="row">
+
+    <!-- <div class="col-lg-12 text-right">
+      <button type="button" class="btn btn-outline-primary" (click)='addhistory()'>
+        <img src="../../../../../assets/images/plus.png" alt="">
+      </button>
+    </div> -->
+  
+      <div class="col-xl-12">
+        <app-card cardTitle="All-Transaction" [options]="false" blockClass="table-border-style">
+            <div class="month" style="text-align: right; "> <b style="color: black;">Select Month</b>
+                <select (change)="setchange($event.target.value)" style="width: 183px; height: 30px;">
+                    <option  value='1'>January</option>
+                    <option value='2'>February</option>
+                    <option value='3'>March</option>
+                    <option value='4'>April</option>
+                    <option value='5'>May</option>
+                    <option value='6'>June</option>
+                    <option value='7'>July</option>
+                    <option value='8'>August</option>
+                    <option value='9'>September</option>
+                    <option value='10'>October</option>
+                    <option value='11'>November</option>
+                    <option  value='12'>December</option>
+                    </select> 
+              </div>
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name </th>
+                <th> Bill Amount </th>
+                <th> Credit Amount</th>
+                <!-- <th> Credit-Amount </th> -->
+                <th>Balance</th>
+                <!-- <th> Action </th> -->
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of pro'>
+                <td>{{data.date}} </td>
+                <td>{{data.name}}</td>
+                <td>{{data.overAllInvoiceAmount | number:'1.2-2'}}</td>
+                <td>{{data.credit| number:'1.2-2'}}</td>
+                <!-- <td>{{data.overAllInvoiceTotal | number:'1.2-2' }}</td> -->
+                <!-- <td>{{data. | number:'1.2-2' }}</td> -->
+                <td> {{data.balance | number:'1.2-2'}}</td>
+                <!-- <td> <button (click)='update(data)'><i class="fa fa-edit"></i></button> </td> -->
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+      </div>
+  
+    </div>
+  

@@ -1,0 +1,72 @@
+
+<div class="d-flex justify-content-center">
+    <!-- <h5 style="padding: 20px; color: black;font-size: 25px; font-weight: 600; ">Vehicle Details</h5> -->
+  </div>
+  <div class="container">
+  <div class="row">
+  
+    <div class="col-xl-12">
+      <app-card cardTitle="Vehicle Details" [options]="false" blockClass="table-border-style">
+
+        <form class="gform" [formGroup]='vechicleForm' (ngSubmit)='onSubmit(vechicleForm.value)'>
+  
+          <div class="row">
+            <input hidden type="text" formControlName='_id'>
+            <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+            <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+
+            <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+
+            <div class="col-lg-6"> 
+                <label for="inventorylabelno">Date</label>  <br>
+                <input type="date" class="form-control" placeholder="Enter Date" formControlName="date"> 
+              </div>
+            <div class="col-lg-6"> 
+              <label for="inventorylabelno">Vehicle No</label>  <br>
+              <input type="text" class="form-control" placeholder="Enter Vechile No" formControlName="vehicleNo"> 
+            </div>
+            <div class="col-lg-6"> 
+              <label for="inventorylabelno">In Time </label>  <br>
+              <input type="text" class="form-control" placeholder="Enter Intime" formControlName="time"> 
+            </div>
+            <div class="col-lg-6"> 
+              <label for="inventorylabelno">Driver Name</label>  <br>
+              <input type="text" class="form-control" placeholder="Enter Driver Name" formControlName="driverName"> 
+            </div>
+            <div class="col-lg-6"> 
+              <label for="workorderno">Cleaner Name</label> <br>
+              <input type="text" class="form-control" placeholder="Enter Cleaner Name" formControlName="cleanerName"> 
+            </div>
+            <div class="col-lg-6"> 
+              <label for="orderquantity">Transporter</label> <br>
+              <input type="text" class="form-control" placeholder="Enter Transporter Nmae" formControlName="transportationName"> 
+            </div>
+            <div class="col-lg-6"> 
+                <label for="orderquantity">Mobile No</label> <br>
+                <input type="text" class="form-control" placeholder="Enter Mobile No" formControlName="mobileNo"> 
+              </div>
+              <div class="col-lg-6"> 
+                <label for="orderquantity">Transport Type</label> <br>
+                <select name="" class="form-control" placeholder="Enter Transport Type" formControlName="type">
+                  <option value="dispatch">Dispatch</option>
+                  <option value="grn">Un-Loading</option>
+                </select>
+                <!-- <input type="text" class="form-control" placeholder="Enter Transport Type" formControlName="type">  -->
+              </div>
+              <!-- <div class="col-lg-6"> 
+                <label for="orderquantity">Mobile No</label> <br>
+                <input type="text" class="form-control" placeholder="Enter Mobile No" formControlName="mobileNo"> 
+              </div> -->
+            <div class="col-lg-12">
+            <div class="text-center padtop" >
+              <button type="submit" class="btn btn-primary"  >Submit</button>
+            </div>
+          </div>
+          </div>
+        
+        </form>
+      </app-card>
+    </div>
+  </div>
+  
+  </div>

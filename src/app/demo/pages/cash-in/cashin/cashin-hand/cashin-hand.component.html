@@ -1,0 +1,35 @@
+<div class="row">
+<div class="col-lg-12 text-right">
+  <button type="button" class="btn btn-outline-primary" (click)='addforms()'>
+    <img src="../../../../../assets/images/plus.png" alt="">
+</button>
+</div>
+
+<div class="col-md-12">  
+  <app-card cardTitle="Cash-In Hand" [options]="false" blockClass="table-border-style">  
+    <div class="table-responsive table-container" >  
+      <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">  
+        <thead>  
+          <tr> 
+            <th>Date</th>  
+            <th>Cash</th>
+            <th>Source</th> 
+           
+            <th>Action</th> 
+          </tr>  
+        </thead>  
+        <tbody>
+            <tr *ngFor="let data of getCashinhand">
+                <td>{{data.date}}</td>
+                <td>{{data.cash}}</td>
+                <td>{{data.source}}</td>
+                <td><button style="background: none; border: none;" (click)='editcashinhand(data)'> <i style="color: #007bff;" class="fa fa-edit">  </i> </button>  &nbsp;&nbsp; 
+                  <button  style="background: none; border: none;" (click)='deletecashinhand(data._id)'> <i style="color: red;" class="fa fa-trash"> </i> </button>
+                </td>
+            </tr>
+        </tbody>
+      </table> 
+    </div>
+  </app-card>
+</div>
+</div>

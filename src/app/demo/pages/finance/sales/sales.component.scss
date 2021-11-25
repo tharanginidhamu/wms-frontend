@@ -1,0 +1,62 @@
+tr, th{
+    text-align: center;
+}
+.searchbox input
+{
+    outline: none;
+    background-color: white;
+}
+.searchlist ul
+{
+    width: 95%;
+    position: absolute;
+    padding: 2%;
+    list-style-type: none;
+    background-color: white;
+    margin-top: -22%;
+    margin-left: 1%;
+    box-shadow: 0 5px 10px #888888;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.searchlist ul li{
+    margin: 1% 0 ;
+}
+// table
+// {
+//     position: relative;
+// }
+.searchlist1 ul
+{
+    width: 93%;
+    position: absolute;
+    padding: 2%;
+    list-style-type: none;
+    background-color: white;
+    margin-top: 0%;
+    margin-left: 1%;
+    box-shadow: 0 5px 10px #888888;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.searchlist1 ul li
+{
+    margin: 1% 0 ;
+}
+
+.container
+{
+    background-color: white;
+    padding: 2%;
+}
+.form-group input{
+    background-color: #F4F7FA;
+}
+
+// .table-striped{
+//     width: 1800px;
+// }

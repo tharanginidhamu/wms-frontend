@@ -1,0 +1,115 @@
+
+
+
+
+<form [formGroup]="SaleForm" (ngSubmit)="onSubmit(SaleForm.value)"  >
+    <div class="row">
+      <div class="col-lg-6 cddiv">
+        <h3 class="billtitle"> Customer credit</h3>
+        <input type="hidden" formControlName="_id">
+        <input type="hidden" formControlName="date">
+        <input type="hidden" formControlName="billAddress">
+        <input type="hidden" formControlName="shipAddress">
+        <input type="hidden" formControlName="contactNumber">
+        <input type="hidden" formControlName="alternateNumber">
+        <input type="hidden" formControlName="cost">
+        <div class="col"> <label for="name">Supplier Name</label> <br> <input type="text"  formControlName='name'>
+         <label for="name">Credit Amount</label> <br> <input type="text" placeholder="credit amount" formControlName='credit' >
+         <label for="name">Total Invoice Amount</label> <br> <input type="text" formControlName='overAllInvoiceAmount'>
+         
+        </div>
+        <div style="text-align: center; padding-top: 10px;">  <button type="submit" class="btn btn-primary" >Submit</button> 
+        </div>
+        </div>
+
+      <div class="col-lg-6 pddiv" style="border-left: 3px solid grey;">
+        <h3 class="billtitle"> Enter Paid Details </h3>
+        <div formArrayName="paid" *ngFor="let a of SaleForm.get('paid')['controls']; let i = index">
+          <div [formGroupName]="i" style="margin-bottom: 10px;">
+            <!-- <input type="hidden" formControlName="_id"> -->
+
+            <div class="col"> <label for="pay">Paid Date:</label> <input type="date" formControlName='dat'> 
+           <label for="pay">Amount of Paid:</label> <input type="text" formControlName='amountPaid' [(ngModel)]="amountpaid" > 
+
+           
+          </div>
+          <div style="text-align: center; "> <button class="btn btn-primary" type="submit">Submit</button> </div>
+  
+          </div>
+        </div>
+      </div>
+        <div formArrayName="products" *ngFor="let a of SaleForm.get('products')['controls']; let i = index">
+          <div [formGroupName]="i" style="margin-bottom: 10px;">
+            <!-- <input type="hidden" formControlName="_id"> -->
+             <input type="hidden" formControlName='itemCode'> 
+              <input type="hidden" formControlName='idate'> 
+               <input type="hidden" formControlName='description'>
+                  <input type="hidden" formControlName='hsnCode'> 
+                    <input type="hidden" formControlName='vom'> 
+                      <input type="hidden" formControlName='custQuantity'>
+                       <input type="hidden" formControlName='unitRate'> 
+                           <input type="hidden" formControlName='CGST'> 
+                             <input type="hidden" formControlName='SGST'>
+                               <input type="hidden" formControlName='col33'> 
+                               <input type="hidden" formControlName='col34'> 
+
+           <input type="hidden" formControlName='col35'>   
+          </div>
+        </div>
+     
+    </div>
+   
+   <br><br>
+  </form>
+
+
+    <app-card cardTitle="Customer Finance Track History " [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <div class="col-lg-6">
+          <label for=""> <b>Name:</b> </label>
+          <label for="">{{name}} </label>
+        </div>
+      
+       <div  class="col-lg-6">
+        <label for=""> <b >Credit Amount:</b> </label>
+        <label for="">{{credit}} </label>
+       </div>
+       <div class="col-lg-6">
+        <label for=""> <b>Location:</b> </label>
+        <label for="">{{location}} </label>
+       </div>
+       <div  class="col-lg-6">
+        <label for=""> <b >Invoice Amount:</b> </label>
+        <label for="">{{amount}} </label>
+       </div>
+    
+        <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+          <thead>
+          <tr>
+           
+            <th>Date</th>
+            <!-- <th>Credit Amount</th> -->
+           
+            
+            <th>Amount of Paid </th>
+            <!-- <th>Balance</th> -->
+          </tr>
+          </thead>
+          <tbody *ngFor='let dat of arr'>
+          <tr *ngFor='let pai of paidarr'>
+            <td>{{pai.dat}} </td>
+            <!-- <td>{{dat.credit}}</td> -->
+            <td>{{pai.amountPaid}}</td>
+            <!-- <td>{{dat.balance}}</td> -->
+          </tr>
+          </tbody>
+        </table>
+        <div class="col-lg-6"> <label style="color: black;" for="lab">Invoice-Total :</label> {{total}} 
+        </div>
+      
+      <div class="col-lg-6"> 
+        <label for="lab" style="color: black;">Balance to be Paid :</label>{{balance}} </div>
+      </div>
+    </app-card>
+
+

@@ -1,0 +1,82 @@
+
+<div class="row">
+  <div class="col-xl-12">
+    <app-card cardTitle="Purchase Details" [options]="false" blockClass="table-border-style">
+      <form class="receiptaddform"[formGroup]='purchaseForm' (ngSubmit)='onSubmit(purchaseForm.value)'>
+        <div class="row">
+          <div class="col-lg-10">  <input type="hidden" formControlName="_id"> </div>
+         
+          <input type="text" size="50" placeholder="Search Supplier Name" class="form-control searchbar" [formControl]="search_supply">
+          <div style="width: 100%;">
+            <div class="searchlist">
+              <ul *ngIf='itemLength>2'>
+                <li *ngFor="let hero of result_supply" (click)='getSuppliersData(hero)' style="cursor:pointer;">
+                  <i class="fas fa-angle-down"></i> &nbsp;{{hero.supplierName}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+          <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+          <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+
+         
+          <div class="col-lg-6"> 
+            <label for="date">Date:</label> <br>  
+            <input type="date" class="form-control" placeholder="Enter date" formControlName="supplierDate" [(ngModel)]="dater">
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Supplier Name:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter the Supplier Name" formControlName="supplierName"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="description">Invoice Number:</label> <br> 
+            <input type="text" class="form-control"  placeholder="Enter the Invoice Number" formControlName="invoiceNo"> 
+           
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12"> <label for="text"> <b>Product Details:</b> </label> </div>
+        </div>
+
+        <div formArrayName="invoice" *ngFor="let a of purchaseForm.get('invoice')['controls']; let i = index">
+          <div [formGroupName]="i" style="margin-bottom: 10px;">
+            <input type="hidden" class="form-control" formControlName="invDate" [(ngModel)]="dater">
+            <input type="hidden" class="form-control" formControlName="returnproduct" >
+            <input  type="hidden"  class="form-control"  formControlName="branchId" >
+
+        <div class="row">
+          <div class="col-lg-2"> 
+            <input type="text" class="form-control" style="text-transform: capitalize;"  placeholder="Enter Category" formControlName="category">       
+            </div>
+          <div class="col-lg-2"> 
+            <input type="text" class="form-control"  placeholder="Enter Item Code" formControlName="itemCode">       
+            </div>
+          <div class="col-lg-4"> 
+            <input type="text" class="form-control"  placeholder="Enter Item Description" formControlName="description">          
+          </div>
+          <div class="col-lg-2"> 
+            <input type="text" class="form-control"  placeholder="Enter Quantity" formControlName="custQuantity">           
+          </div>
+          <div class="col-lg-2"> 
+         <input type="text" class="form-control" placeholder="Enter the Invoice Total" formControlName="total">           
+          </div>
+          <div class="col-lg-1"> 
+            <button type="button"  class="btn btn-secondary" (click)="addItem()"><i class="fas fa-plus"></i> </button>         
+          </div>
+          <div class="col-lg-1"  [hidden]='change==0'> 
+            <button type="button"  class="danger" (click)="removeItem(i)"><i class="fas fa-remove"></i></button>         
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center" > 
+      <div class="col-lg-2">
+     <button type="submit" > Submit </button>  
+    </div>
+  </div>
+      </form>
+    </app-card>
+  </div>
+</div>

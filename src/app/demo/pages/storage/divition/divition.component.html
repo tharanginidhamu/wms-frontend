@@ -1,0 +1,161 @@
+<div class="row">
+  <!-- <div class="col-xl-12 text-right">
+    <button type="button" class="addbutton btn btn-outline-primary" data-toggle="modal" data-target="#myModal" >
+      <img src="../../../../../assets/images/images/icons8-plus-24.png" alt="">
+    </button>
+  </div> -->
+</div>
+  <app-card cardTitle="Division And Rack Usage" [options]="false" blockClass="table-border-style">
+    <div class="container">
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form class="receiptaddform" [formGroup]="receiptform" (ngSubmit)="addDivision(receiptform.value)" >
+
+                <div class="row">
+                  <!-- <div class="col-lg-12">  <input type="text" formControlName="_id"> </div> -->
+                  <div class="col-lg-6"> <label for="description">Division:</label> <br>
+                    <input type="text" placeholder="Enter the Description" formControlName="division" />
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="suppliername">Rack</label>
+                    <input type="text" placeholder="Enter the Supplier Name" formControlName="rack">
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="suppliername">Qunatity</label>
+                    <input type="text" placeholder="Enter the Supplier Name" formControlName="quantity">
+                  </div>
+                  <!-- <div class="col-lg-6"> <label for="quantity">Used:</label> <br>
+                    <input type="text" placeholder="Enter the Quantity" formControlName="used"  />
+                  </div>
+                  <div class="col-lg-6"> <label for="quantity">Free Space:</label> <br>
+                    <input type="text" placeholder="Enter the Quantity" formControlName="avalible"  />
+                  </div> -->
+                  <div class="col-lg-3">  <button type="submit"> Submit </button>  </div>
+                  <div class="col-lg-3">  <button type="reset" class="clear"> Clear </button>  </div>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+  <div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Avalibility</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Rack</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="home" class="container tab-pane active"><br>
+        <table class="table-responsive table-striped">
+          <thead>
+          <tr>
+            <th>Division</th>
+            <th> Rack </th>
+            <th> Total Space </th>
+            <th> Used </th>
+            <th>Free Space </th>
+
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let data of rack'>
+              <td>{{data.division}}</td>
+              <td>{{data.rack}}</td>
+              <td>{{data.quantity}}</td>
+              <td>{{data.used}}</td>
+              <td>{{data.avalible}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="menu1" class="container tab-pane fade"><br>
+
+        <div class="col-xl-12">
+            <select [(ngModel)]="selected" name="finalDiv" placeholder="select" (ngModelChange)="onOptionsSelected()">
+              <option *ngFor="let sta of finalRack" [ngValue]="sta">{{sta.division}}</option>
+          </select>
+          <select [(ngModel)]="filterValue" name="rackfilter" placeholder="select" (ngModelChange)="onSelected()" style="margin-left: 10px;">
+            <option *ngFor="let sta of finalRackArray" [ngValue]="sta">{{sta.rack}}</option>
+        </select>
+        </div>
+      </div>
+      <table class="table-responsive table-striped" *ngIf='divisionShow'>
+        <thead>
+        <tr>
+         <th>Division</th>
+         <th> Rack</th>
+          <th> Total Space </th>
+          <th> Used </th>
+          <th> Free </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor='let data of filtered' >
+          <td>{{data.division}}</td>
+          <td>{{data.rack}} </td>
+          <td> {{data.quantity}} </td>
+          <td> {{data.used}} </td>
+          <td> {{data.avalible}} </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table-responsive table-striped" *ngIf='racksShow'>
+        <thead>
+        <tr>
+         <th>Division</th>
+         <th> Rack</th>
+          <th> ItemCode </th>
+          <th> Description </th>
+          <th> Recipt No </th>
+          <th> Quantity </th>
+          <th> UOM </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor='let data of filterValuee'>
+          <td>{{data.division}}</td>
+          <td>{{data.rack}} </td>
+          <td> {{data.itemCode}} </td>
+          <td> {{data.description}} </td>
+          <td> {{data.reciptno}} </td>
+          <td> {{data.quantity}} </td>
+          <td> {{data.vom}} </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</app-card>
+
+
+

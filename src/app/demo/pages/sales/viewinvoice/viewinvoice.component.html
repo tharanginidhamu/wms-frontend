@@ -1,0 +1,239 @@
+<div class="row" [hidden]='forBill==false'>
+    <!-- <div class="col-lg-12 text-right">
+        <button type="button" class="btn btn-outline-primary" (click)='invoiceform()'> 
+        <img src="../../../../../assets/images/plus.png" alt=""> 
+        </button>
+    </div> -->
+
+    <div class="col-xl-12">
+        <app-card cardTitle="Invoice Details" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Invoice Number </th>
+                <th> Date </th>
+                <th> Customer Name </th>
+                <th> GST Number </th>
+               
+                <th> Contact Number </th>
+                <th> Action </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of getData'>
+                <td>{{data.invoiceNumber}}</td>
+                <td>{{data.date}} </td>
+                <td>{{data.name}} </td>
+                <td>{{data.cost}} </td>
+               
+                <td>{{data.contactNumber}} </td>
+                <td>
+                  <i (click)='show(data)' style="color: gray;" class="fa fa-eye"></i>   &nbsp;&nbsp;
+                   <i  (click)='updatearr(data)' style="color: #007bff;"class="fa fa-edit"></i>  &nbsp;&nbsp;
+                   <i  (click)='delete(data._id)' style="color: red;" class="fa fa-remove"></i>   </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+      </div>
+</div>
+
+
+
+
+<section class="invoicediv" *ngIf='table'>
+  <div *ngFor='let data of values' id="print-section">
+  <div class="row rowmargin" >
+    <div class="col-2 brandtitle">
+      <h3>Technonix</h3>
+      <!-- <button (click)='editData(data)'>edit</button> -->
+    </div>
+    <div class="col-7">
+      <h4>Technonix Infosystem Pvt Ltd.</h4>
+      <small>Present The Future</small>
+      <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+        +91 9080095906 info@technonix.co.in
+      </p>
+    </div>
+    <div class="col-3 text-center brandtype">
+      <h3> GST Invoice </h3>
+      <h5> Customer </h5>
+    </div>
+  </div>
+  <div class="row rowmargin">
+    <div class="col-9">
+      <div class="row borderdiv">
+        <div class="col-3">
+          <b> Branch Address </b>
+          <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+            +91 9080095906 info@technonix.co.in
+          </p>
+        </div>
+        <div class="col-3">
+          <b> Warehouse Address </b>
+          <p>No.3, First Cross Street,   Thirumurugan Nagar, Porur,  Chennai 600116, Tamil Nadu. <br>
+            +91 9080095906 info@technonix.co.in
+          </p>
+        </div>
+        <div class="col-3">
+          <b> Billing Address </b>
+          <p>{{data.billAddress}}
+          </p>
+        </div>
+        <div class="col-3">
+          <b> Shipping/Delivery Address </b>
+          <p>{{data.shipAddress}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 invoicedate">
+
+      <div class="row">
+        <div class="col-6">
+          <p> GST Inv No </p>
+          <p> GST Inv Date </p>
+          <p> Order No </p>
+          <p> Cust PO No  </p>
+          <p> Order Date </p>
+          <p> Payment Term </p>
+          <p> Due Date </p>
+        </div>
+        <div class="col-6">
+          <p> : {{data.invoiceNumber}} </p>
+          <p> : {{data.date}}</p>
+          <p> : </p>
+          <p> : </p>
+          <p> : 08 12 2019 </p>
+          <p> : Immediate </p>
+          <p> : 12 01 2020 </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>Pkg Slip No : </p>
+      <p> Product Category : </p>
+      <p>No of cases :</p>
+    </div>
+    <div class="col-3">
+      <p>Pkg Slip No : </p>
+      <p> Product Category : </p>
+      <p>No of cases :</p>
+    </div>
+    <div class="col-3">
+      <p>Pkg Slip No : </p>
+      <p> Product Category : </p>
+      <p>No of cases :</p>
+    </div>
+    <div class="col-3">
+      <p>Pkg Slip No : </p>
+      <p> Product Category : </p>
+      <p>No of cases :</p>
+    </div>
+  </div>
+  <div class="row rowmarge">
+    <div class="col-12 invoicetable">
+      <table class="table table-striped " >
+        <tr>
+          <th rowspan="2"> Item Code </th>
+          <th rowspan="2">Description of Goods </th>
+          <th rowspan="2"> HSN Code </th>
+           <th rowspan="2"> Quantity </th>
+          <th rowspan="2"> Unit Rate </th>
+           <th rowspan="2">UOM</th>
+          <th rowspan="2"> Sales Value </th>
+          <th colspan="2"> CGST/ <sub>pcs</sub> </th>
+          <th colspan="2"> SGST/ <sub>pcs</sub> </th>
+          <th rowspan="2">Cost/<sub>pcs</sub> </th>
+          <th rowspan="2">Total Amount</th>
+        </tr>
+        <tr >
+          <th>Rate</th>
+          <th>Amount</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+        <tr *ngFor='let value of bill'>
+          <td> {{value.itemCode}} </td>
+          <td class="description">{{value.description}} </td>
+          <td> {{value.hsnCode}} </td>
+          <td>{{value.custQuantity}}</td>
+          <td>{{value.unitRate | number:'1.2-2'}}</td>
+            <td>pcs</td>
+          <td>  {{value.total | number:'1.2-2'}} </td>
+          <td>  {{value.CGST}}</td>
+          <td>  {{value.CGSTAmount | number:'1.2-2'}} </td>
+          <td>  {{value.SGST}}</td>
+          <td>  {{value.SGSTAmount | number:'1.2-2'}} </td>
+          <td>  {{value.gstUnit | number:'1.2-2'}} </td>
+          <td>  {{value.invoiceTotal | number:'1.2-2'}} </td>
+  
+        </tr>
+        <tr>
+          <td rowspan="2">Total</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td ></td>
+          <td > </td>
+          <td>{{data.overAllCGSTUnit | number:'1.2-2'}}</td>
+          <td> </td>
+          <td>{{data.overAllSGSTUnit | number:'1.2-2'}}</td>
+          <td></td>
+          <td rowspan="2">{{data.overAllInvoiceAmount}} </td>
+  
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row rowmarginbottom">
+    <div class="col-3 text-center signbox">
+      Receiver's Remarks & <br> Signature
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12"><p class="invoicefootertext">One of the major problems with invoicing is that many of the tools available make it difficult for a company to customise the invoice. There may be a set range of templates available, but these don’t always work for everyone</p></div>
+      </div>
+      <div class="row">
+        <div class="col-8"> <b> Bank Details : </b> <small> A/c: State Bank of India </small> <b>Account No: </b> <small> 00000001235461 </small> <b>IFSC Code: </b> <small> SBIN0014560</small> <br> <b>MICR Code:</b> <small>SB0014560</small> </div>
+        <div class="col-4"> <b> <br> FOR : Technonix Infosystem Pvt Ltd.</b> </div>
+      </div>
+      <div class="row">
+        <div class="col-12"> <b>Customer Care Number : 044 0123 5102 Whatsapp No : 9876543210 </b>  </div>
+      </div>
+      <div class="row">
+        <div class="col-12"> <b>SUBJECT TO CHENNAI JURIDICTION</b> </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 terms">
+      FOR TERMS AND CONDITIONS SEE OVERLEAF
+      <img src="1.png" alt="">
+      <img src="1.png" alt="">
+    </div>
+    <div class="col-6 text-center">
+      <b>fjslfj | dms | fms | wms | product | service | portal </b>
+    </div>
+    <div class="col-3 text-center">
+      Authorized Signatury
+    </div>
+  </div>
+  <div> <button (click)="back()" class="btn btn-primary" ><i class="far fa-arrow-alt-circle-left"></i></button> </div>
+    <div class="d-flex justify-content-center">
+   <button type="button" class="btn btn-primary"styleSheetFile="assets/css/custom1.css,assets/css/custom2.css"   [useExistingCss]="true" printSectionId="print-section" ngxPrint>Import
+  </button>
+</div>
+</div>
+</section>
+
+
+

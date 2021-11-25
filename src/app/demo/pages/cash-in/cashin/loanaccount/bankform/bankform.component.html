@@ -1,0 +1,87 @@
+
+<div class="row" >
+    <div class="col-xl-12">
+      <app-card cardTitle="Loan-Account Details" [options]="false" blockClass="table-border-style">
+        <form class="receiptaddform"[formGroup] = "loanForm" (ngSubmit) = "onSubmit(loanForm.value)">
+          <div class="row">
+            <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+            <div [hidden]='emi==true'>
+              <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+              <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+              <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+  
+            <div class="col-lg-6"> 
+              <label for="date">Date:</label> <br>  
+              <input type="text" class="form-control" placeholder="Enter date" formControlName="date" >
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">Bank Name:</label> <br>  
+              <input type="text" class="form-control"  placeholder="Enter bankName" formControlName="bankName"> 
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">Account-Holder Name :</label> <br>  
+              <input type="text" class="form-control"  placeholder="Enter source" formControlName="accountHolderName"> 
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">AccountNumber:</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter accountNumber" formControlName="accountNumber"> 
+                
+              </div>
+              <div class="col-lg-6"> <label for="itemcode"> IFSC-Code :</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter ifscCode" formControlName="ifscCode"> 
+                
+              </div>
+              <div class="col-lg-6"> <label for="itemcode"> Branch Name:</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter Branch Name" formControlName="bankBranch"> 
+                
+              </div>
+              <div class="col-lg-6"> <label for="itemcode">Loan Type :</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter LoanType" formControlName="loanType"> 
+                
+              </div>
+              <div class="col-lg-6"> <label for="itemcode"> Loan Period:</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter Loan Period" formControlName="loanPeriod"> 
+                
+              </div>
+              <div class="col-lg-6"> <label for="itemcode"> Loan Amount :</label> <br>  
+                <input type="text" class="form-control"  placeholder="Enter  loan Amount" formControlName="loanAmount"> 
+                
+              </div>
+             
+                <div class="col-lg-12">
+                <div class="submit"><button type="submit" > Submit </button>  </div>
+              </div>
+           
+            </div>
+             
+              <div class="col-lg-12" [hidden]='emi==false'>
+                <h3 class="billtitle"> EMI-Details </h3>
+                <div formArrayName="paid" *ngFor="let a of loanForm.get('paid')['controls']; let i = index">
+                  <div [formGroupName]="i">
+                    <!-- <input type="hidden" formControlName="_id"> -->
+                    <div class="col-lg-6"> <label for="itemcode"> Paid Date :</label> <br>  
+                      <input type="text" class="form-control"  placeholder="Enter date" formControlName="date">   
+                    </div>
+                    <div class="col-lg-6"> <label for="itemcode"> Amount of Paid :</label> <br>  
+                      <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="emi">                       
+                    </div>                  
+                  </div>         
+                  </div>
+                  <div class="row sub"> 
+                    <div class="col-lg-12">
+                    <div class="submit"><button type="submit" > Submit </button>  </div>
+                  </div>
+                </div>
+                </div>          
+            </div>
+        </form>
+      </app-card>
+    </div>
+  </div>
+
+
+
+
+
+
+  

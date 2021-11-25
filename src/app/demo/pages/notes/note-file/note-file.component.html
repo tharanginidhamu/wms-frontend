@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xl-12 text-right">
+      <button type="button" class=" btn btn-outline-primary" (click)="addforms()"> 
+        <i class="fa fa-plus" ></i>
+      </button> 
+    </div> 
+    <div class="col-lg-12">
+      <app-card cardTitle="Notes" [options]="false" blockClass="table-border-style">
+        <ul>
+          <li *ngFor = "let data of temp">
+            <a>
+              <h2> {{data.createdBy}} 
+                <button (click)="editnote(data)"> <i class="fa fa-edit"></i> </button> &nbsp;&nbsp;&nbsp;&nbsp; 
+                <button (click)="delnote(data._id)"> <i class="fa fa-trash"></i> </button> 
+              </h2>
+              <p>{{data.description}}</p>
+              <div class="date text-right">
+                <span>{{data.date}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </app-card>
+  
+    </div>
+  </div>

@@ -1,0 +1,56 @@
+<div class="row" >
+    <div class="col-xl-12">
+      <app-card cardTitle="Bank-Account Details" [options]="false" blockClass="table-border-style">
+        <form class="receiptaddform"[formGroup] = "detailsForm" (ngSubmit) = "onsubmit(detailsForm.value)">
+          <div class="row">
+            <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+            <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+            <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+            <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+
+           
+            <div class="col-lg-6"> 
+              <label for="date">Account-Holder Name:</label> <br>  
+              <input type="text" class="form-control" placeholder="Enter Name" formControlName="accountHolderName" >
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">Account-Number:</label> <br>  
+              <input type="text" class="form-control"  placeholder="Enter accountNumber" formControlName="accountNumber"> 
+              
+            </div>
+            <div class="col-lg-6"> <label for="itemcode">Account-Type :</label> <br>  
+              <input type="text" class="form-control"  placeholder="Enter accountType" formControlName="accountType"> 
+              
+            </div>
+         
+        
+          <div class="col-lg-6"> <label for="itemcode">Branch :</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter branch" formControlName="bankBranch"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">IFSC-Code:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter ifscCode" formControlName="ifscCode"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Bank Name:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter bankName" formControlName="bankName">    
+          </div> 
+          <div class="col-lg-6"> <label for="itemcode">Bank Address:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter bankAddress" formControlName="bankAddress"> 
+            
+          </div>
+          <div class="col-lg-6"> <label for="itemcode">Amount:</label> <br>  
+            <input type="text" class="form-control"  placeholder="Enter Amount" formControlName="amount"> 
+            
+          </div>
+        
+        </div>
+      <div class="row sub"> 
+      <div class="submit"  >  <button type="submit" > Submit </button>  </div>
+    </div>
+  
+        </form>
+      </app-card>
+    </div>
+  </div>
+  

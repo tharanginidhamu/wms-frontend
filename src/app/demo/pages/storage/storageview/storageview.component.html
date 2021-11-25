@@ -1,0 +1,106 @@
+<!-- 
+
+
+
+  <app-card cardTitle="Division And Rack Usage Details" [options]="false" blockClass="table-border-style">
+<div class="row">
+  <div class="col-lg-6">
+    <label for="suppliername" style="font-size: 20px; color: black;">Select Division</label>
+  <select [(ngModel)]="selected" name="finalDiv"  placeholder="select" (ngModelChange)="onOptionsSelected()">
+    <option *ngFor="let sta of div" [ngValue]="sta">{{sta.division}}</option>
+
+</select>
+
+</div>
+  </div>
+  <div class="title">
+    <h3>  DIVISION &nbsp;&nbsp;  {{division}}</h3>
+
+  </div>
+
+
+
+  <div class="row" style="padding-left: 15px;">
+   
+    <div class="row" *ngFor="let det of final">
+<div class="col-lg-2">
+<div class="container">
+<div class="items">
+<div class="items-head row">
+  <div class="col-lg-12">
+    <p style="padding-left: 10px;">RACK<span style="margin-left: 60px;text-transform: uppercase;" >{{det.rack}}</span></p>
+  </div>
+
+ <hr style="border: 1px solid lightblue; ">
+</div>
+
+<div class="items-body">
+  <div class="items-body-content">
+    <span>Total </span>
+<span class="time">{{det.quantity}}</span>
+  </div>
+  <div class="items-body-content">
+    <span>Available </span>
+    <span class="time"> {{det.avalible}}</span>
+  </div>
+  <div class="items-body-content" [ngClass]="{
+    'positive':det.percentage > '50.00',
+    'negative': det.percentage <'50.00',
+    'full': det.percentage =='100.00',
+    'empty': det.percentage =='0.00'
+
+  }">
+    <span for="item-3" class="text"> {{det.percentage}}% </span> <span class="time"> Used</span>
+  
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</app-card>
+     -->
+     <div class="row">
+      <div class="col-xl-12 text-right">
+       
+      </div>
+      <div class="col-md-12">
+          <app-card cardTitle="Division And Rack Details" [options]="false" blockClass="table-border-style">
+            <div style="padding-left: 65%;">
+              <ul>
+                <li> <input type="text" style=" background-color:#2adf30 ; border: none; width: 25px;"  >&nbsp; Rack is Fully Free  </li>
+                <li> <input type="text" style=" background-color:#fbff00; border: none; width: 25px; margin-top: 3px;">&nbsp; Rack is Above 50% Occupied</li>
+                <li> <input type="text" style=" background-color:#11079c; border: none; width: 25px;margin-top: 3px;">&nbsp; Rack is Above 50% Available</li>
+                <li> <input type="text" style=" background-color:#ff0000; border: none; width: 25px;margin-top: 3px;" >&nbsp; No More Space In Rack</li>
+      
+              </ul>
+            </div>
+            <div class="list">
+              <ul>  
+                <!-- <li> </li> -->
+               
+              </ul>
+              <ul *ngFor="let item of on">
+                <li  data-label="division">{{item.division}}</li>
+                <li *ngFor="let it of item.array" data-label="rack" > {{it.rack |uppercase}} <label [ngClass]="{
+                  'positive':it.percentage > '50.00',
+                  'negative': it.percentage <'51.00',
+                  'full': it.percentage =='100.00',
+                  'empty': it.percentage =='0.00'
+
+                }" style="height: 27px; width: 30px; padding: 2px;text-align: center;"><span  >{{it.avalible}}</span></label>  </li>
+                <!-- <li *ngFor="let it of item.array" data-label=""> </li> -->
+                <!-- <li data-label="number">0123456789</li>
+                <li data-label="reference">ABCDE</li>
+                <li data-label="description">
+                 -->
+                <!-- </li> -->
+              </ul>
+             
+            </div>
+          </app-card>
+      </div>
+  </div>
+  <!-- {{row[in] |json}} -->

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12 text-right">
+      <button type="button" class="addbutton btn btn-outline-primary" (click)="addforms()"> 
+        <img src="../../../../../assets/images/plus.png" alt="">
+      </button> 
+    </div> 
+    <div class="col-lg-12">
+      <app-card cardTitle="Notes" [options]="false" blockClass="table-border-style">
+        <div class="table-responsive table-container" >  
+          <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">  
+            <thead>  
+              <tr> 
+                <th>Date</th>  
+                <th>File Name</th>
+                <th>File</th>               
+                <th>Action</th> 
+              </tr>  
+            </thead>  
+            <tbody>
+                <tr *ngFor="let data of getFile">
+                    <td>{{data.date}}</td>
+                    <td>{{data.fileName}}</td>
+                    <td>  <a href = "{{data.avatar}}" target = 'blank'> download</a></td>
+                    <td> 
+                      <button (click)='deleteFile(data._id)' style="background: none; border: none;"> <i style="color: red;" class="fa fa-trash"> </i> </button>
+                    </td>
+                </tr>
+            </tbody>
+          </table> 
+        </div>
+      </app-card>
+  
+    </div>
+  </div>
+
+ 

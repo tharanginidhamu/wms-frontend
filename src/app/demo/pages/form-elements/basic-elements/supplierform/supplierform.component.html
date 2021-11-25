@@ -1,0 +1,52 @@
+
+<div class="row">
+  <div class="col-xl-12">
+    <app-card cardTitle="Customer Details" [options]="false" blockClass="table-border-style">
+      <form class="receiptaddform" [formGroup]='supplierForm' (ngSubmit)='onSubmit(supplierForm.value)'>
+        <div class="row">
+          <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+          <input type="hidden" class="form-control"  formControlName="date">
+          <input  type="hidden"  class="form-control"  formControlName="branchId">
+          <input  type="hidden"  class="form-control"  formControlName="branchName">
+          <input  type="hidden"  class="form-control"  formControlName="branchLocation">            
+
+         
+
+          <div class="col-lg-6"> 
+            <label for="email">Customer Name:</label>         
+            <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+             
+          </div>
+          <div class="col-lg-6"> <label for="pwd">Contact Number:</label>  <br> 
+            <input type="text" class="form-control" placeholder="Enter Contact Number" formControlName="contactNumber"> 
+             
+          </div>
+          <div class="col-lg-6">  <label for="pwd">Billing Address:</label> <br>  
+            <textarea type="text" class="form-control" placeholder="Enter Bill Address" formControlName="billAddress"></textarea>
+              
+          </div>
+          <div class="col-lg-6"> <label for="pwd">Shipment Address:</label>  <br> 
+            <textarea class="form-control" placeholder="Enter Ship Address" formControlName="shipAddress"></textarea> 
+            
+          </div>
+         
+         
+          <div class="col-lg-6"> <label for="pwd">Alternative Number:</label><br> 
+            <input type="text" class="form-control" placeholder="Enter Alternative Number" formControlName="alternateNumber"> 
+            
+          </div>
+          <div class="col-lg-6">  <label for="pwd">GST Number:</label> <br> 
+            <input type="text" class="form-control" placeholder="Enter GST Number" formControlName="cost"> 
+            
+          </div>
+          
+        </div>
+        <div class="row subres">
+          <div class="col-lg-3">  <button type="submit"> Submit </button>  </div>
+          <div class="col-lg-3">  <button type="reset" class="clear"> Clear </button>  </div>
+
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>

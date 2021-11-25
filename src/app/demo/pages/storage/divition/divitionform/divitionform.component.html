@@ -1,0 +1,60 @@
+
+<div class="row">
+
+  <div class="col-xl-12">
+    <app-card cardTitle="Rack" [options]="false" blockClass="table-border-style">
+      <form class="receiptaddform" [formGroup]="receiptform" (ngSubmit)="addDivision(receiptform.value)" >
+
+        <div class="row">
+          <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+          <div class="col-lg-6">
+            <label for="suppliername">Select Division</label>
+          <select [(ngModel)]="selected" name="finalDiv" formControlName="division" placeholder="select" (ngModelChange)="onOptionsSelected()">
+            <option *ngFor="let sta of finalDiv" [ngValue]="sta">{{sta.division}}</option>
+        </select>
+      </div>
+      <div class="col-lg-6">
+        <label for="suppliername">Select Rack</label>
+        <select [(ngModel)]="filterValue" name="rackfilter" formControlName="rack" placeholder="select" (ngModelChange)="onSelected()">
+          <option *ngFor="let sta of finalRackArray" [ngValue]="sta">{{sta.rack}}</option>
+      </select>
+  </div>
+          <!-- <div class="col-lg-6"> <label for="description">Division:</label> <br>
+            <input type="text" placeholder="Enter the Description" formControlName="division" />
+          </div> -->
+          <!-- <div class="col-lg-6">
+            <label for="suppliername">Rack</label>
+            <input type="text" placeholder="Enter the Supplier Name" formControlName="rack">
+          </div> -->
+          <div class="col-lg-6"> <label for="description">Rack Size:</label> <br>
+            <input type="text" placeholder="Enter the racksize" formControlName="racksize" />
+          </div>
+          <div class="col-lg-6">
+            <label for="suppliername">Avalible Space</label>
+            <input type="text" placeholder="Enter Avalible Space" formControlName="avalible">
+          </div>
+          <div class="col-lg-6"> <label for="quantity">Recipt No:</label> <br>
+            <input type="text" placeholder="Enter Recipt No" formControlName="reciptno"  />
+          </div>
+          <div class="col-lg-6"> <label for="quantity">Item Code:</label> <br>
+            <input type="text" placeholder="Enter the Quantity" formControlName="itemCode"  />
+          </div>
+          <div class="col-lg-6"> <label for="quantity">Product Name:</label> <br>
+            <input type="text" placeholder="Enter the description" formControlName="description"  />
+          </div>
+          <div class="col-lg-6"> <label for="quantity">Quantity:</label> <br>
+            <input type="number" placeholder="Enter the Quantity" formControlName="quantity" [(ngModel)]='itemQuantity'  />
+          </div>
+         <div class="col-lg-6"> <label for="invoiceno">UOM:</label> <br>
+            <input type="text" placeholder="Enter the vom" formControlName="vom"  />
+          </div>
+          <div class="col-lg-3">  <button type="submit"> Submit </button>  </div>
+          <div class="col-lg-3">  <button type="reset" class="clear"> Clear </button>  </div>
+        </div>
+
+      </form>
+
+    </app-card>
+  </div>
+
+</div>

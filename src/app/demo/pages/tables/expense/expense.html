@@ -1,0 +1,65 @@
+<div class="row"  >
+
+    <div class="col-lg-12 text-right">
+      <button type="button" class="btn btn-outline-primary" (click)='addform()'>
+        <img src="../../../../../assets/images/plus.png" alt="">
+    </button>
+    </div>
+  
+      <div class="col-xl-12">
+        <app-card cardTitle="Expense" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Date </th>
+                <th>Client-Realted Cost</th>
+                <th>Transportation</th>
+                <th>Food/Utility</th>
+                <th> Rental </th>
+                <th>Health</th>
+                <th>Electricity</th>
+                <th>Labours-Salary</th>
+                <th>others</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of getData'>
+                <td>{{data.date}}</td>
+                <td>{{data.client | number:'1.2-2'}}</td>
+                <td>{{data.transportation | number:'1.2-2'}}</td>
+
+                <td>{{data.foodutility| number:'1.2-2'}}</td>
+                <td>{{data.rental | number:'1.2-2'}}</td>
+                <td>{{data.health | number:'1.2-2'}}</td>
+                <td>{{data.electricity| number:'1.2-2' }}</td> 
+                <td>{{data.laboursal| number:'1.2-2' }}</td>
+                <td>{{data.others | number:'1.2-2' }}</td>
+            
+                <td>
+                  <!-- <button (click)='show(data)'> <i class="fa fa-edit">  </i> </button> &nbsp;&nbsp;  -->
+  
+                 <button style="background: none; border: none;" (click)='edit(data)'> <i style="color: #007bcf;" class="fa fa-edit">  </i> </button> &nbsp;&nbsp; 
+                    <button style="background: none; border: none;" (click)='Delete(data._id)'> <i style="color: red;"class="fa fa-trash">  </i> </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+      </div>
+    </div>
+
+    
+
+    
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+

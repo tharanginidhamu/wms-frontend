@@ -1,0 +1,43 @@
+<div class="row">
+
+  <div class="col-lg-12 text-right">
+    <button type="button" class="btn btn-outline-primary" (click)='returnform()'>
+      <img src="../../../../../assets/images/plus.png" alt="">
+    </button>
+  </div>
+    <div class="col-xl-12">
+        <app-card cardTitle="Return Product Details" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+              <thead>
+              <tr>
+                <th> Item Code </th>
+                <th> Description </th>
+                <th> Supplier Name </th>
+                <th> HSN Code </th>
+                <th> Quantity </th>
+                <th> UOM </th>
+                <th> Status </th>
+                <th> Action </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let data of getProducts'>
+                  <td>{{data.itemCode}}</td>
+                  <td>{{data.description}} </td>
+                  <td> {{data.supplierName}} </td>
+                  <td> {{data.hsnCode}} </td>
+                  <td> {{data.returnproduct}} </td>
+                  <td> {{data.vom}} </td>
+                  <td> {{data.returnstatus}} </td>
+                  <td> <button style="border: none; background:none;" (click)='editReturn(data)'> <i style="color: #007bff;" class="fa fa-edit"></i> </button> &nbsp;
+                    <button  style="border: none; background: none;" (click)='deleteReturn(data._id)'><i style="color: red;" class="fa fa-remove"></i> </button> </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </app-card>
+
+    </div>
+
+</div>

@@ -1,0 +1,34 @@
+      <div class="row" >
+        <div class="col-xl-12">
+          <app-card cardTitle="Cash-Amount Details" [options]="false" blockClass="table-border-style">
+            <form class="receiptaddform"[formGroup] = "cashForm" (ngSubmit) = "onSubmit(cashForm.value)">
+              <div class="row">
+                <div class="col-lg-12">  <input type="hidden" formControlName="_id"> </div>
+                <input  type="hidden"  class="form-control"  formControlName="branchId" readonly>
+                <input  type="hidden"  class="form-control"  formControlName="branchName" readonly>
+                <input  type="hidden"  class="form-control"  formControlName="branchLocation" readonly>            
+    
+                <div class="col-lg-6"> 
+                  <label for="date">Date:</label> <br>  
+                  <input type="text" class="form-control" placeholder="Enter date" formControlName="date" >
+                  
+                </div>
+                <div class="col-lg-6"> <label for="itemcode">CashAmount:</label> <br>  
+                  <input type="text" class="form-control"  placeholder="Enter CashAmount" formControlName="cash"> 
+                  
+                </div>
+                <div class="col-lg-6"> <label for="itemcode">Source :</label> <br>  
+                  <input type="text" class="form-control"  placeholder="Enter source" formControlName="source"> 
+                  
+                </div>
+            </div>
+          <div class="row sub"> 
+          <div class="submit"  >  <button type="submit" > Submit </button>  </div>
+        </div>
+      
+            </form>
+          </app-card>
+        </div>
+      </div>
+      
+    
